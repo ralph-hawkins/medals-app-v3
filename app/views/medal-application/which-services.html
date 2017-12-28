@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-  GOV.UK prototype kit
+  Medals application
 {% endblock %}
 
 {% block content %}
@@ -10,7 +10,11 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <h1 class="heading-large">Which organisations did you serve with?</h1>
+      {% if data['applicant'] == 'Yes' %}
+        <h1 class="heading-large">Which organisations did you serve with?</h1>
+      {% else %}
+        <h1 class="heading-large">Which organisations did the service&nbsp;person serve with?</h1>
+      {% endif %}
 
       <form action="service-details" method="post" class="form">
 
@@ -27,10 +31,8 @@
             {{ forms.checkbox( 'organisations', 'Home guard', 'home-guard') }}
             {{ forms.checkbox( 'organisations', 'Royal Air force', 'raf') }}
             {{ forms.checkbox( 'organisations', 'Royal Navy', 'navy') }}
-
-            <p class='or'>
-              
-            </p>
+            {{ forms.checkbox( 'organisations', 'Royal Marines', 'marines') }}
+            {{ forms.checkbox( 'organisations', 'The reserve forces', 'reserve-forces') }}
 
             <div class="multiple-choice">
               <input id="other-orgs" 
@@ -42,16 +44,31 @@
                 Other organisations
                 <br>
                 <span class='label-explanation'>
-                  For example Civil defense service, Royal Fleet Auxillary or Merchant Navy.
+                  For example Civil defense service, Royal Fleet Auxillary or Merchant Navy
                 </span>
               </label>
             </div>
 
 
-            <!--
-              Put this for not myself route
-            {{ forms.checkbox( 'organisations', 'yes') }}
-            -->
+            {% if data['applicant'] != 'Yes' %}
+
+            <p class='or'>
+              Or
+            </p>
+
+
+            <div class="multiple-choice">
+              <input id="other-orgs" 
+                     type="checkbox" 
+                     name="organisations"
+                     value="unknown-organisations"
+              >
+              <label for="unknown-organisations">
+                Don’t know
+              </label>
+            </div>
+
+            {% endif %}
 
           </fieldset>
         </div>

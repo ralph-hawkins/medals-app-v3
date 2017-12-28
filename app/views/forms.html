@@ -10,22 +10,15 @@
     <textarea class="form-control form-control-2-3" id="{{ id }}" rows='5'></textarea>
 {% endmacro %}
 
-{% macro radio_button( name, label, id ) %}
+{% macro radio_button( id, name, value, label ) %}
   <div class="multiple-choice">
-    <input id="{{ id }}" type="radio" name="{{ name }}" value="{{ label }}">
+    <input 
+    id="{{ id }}" 
+    name="{{ name }}" 
+    type="radio" 
+    value="{{ value }}" 
+    {{ checked("{{ name }}", "{{ label }}") }}>
     <label for="{{ id }}">{{ label }}</label>
-  </div>
-{% endmacro %}
-
-{% macro boolean( id_yes, id_no, name, label_yes, label_no) %}
-  <div class="multiple-choice">
-    <input id="{{ id_yes }}" type="radio" name="{{ name }}" value="Yes">
-    <label for="{{ id_yes }}">{{ label_yes }}</label>
-  </div>
-        
-  <div class="multiple-choice">
-    <input id="{{ id_no }}" type="radio" name="{{ name }}" value="No">
-    <label for="{{ id_no }}">{{ label_no }}</label>
   </div>
 {% endmacro %}
 

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-  GOV.UK prototype kit
+  Medals application
 {% endblock %}
 
 {% block content %}
@@ -10,26 +10,33 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <h1 class="heading-large">Are you retired from the armed forces?</h1>
+      <h1 class="heading-large">
+        {% if data['applicationPerson'] == 'yesMyself' %}
+          Are you retired from the armed forces?
+        {% else %}
+          Is the service&nbsp;person retired from the armed forces?
+        {% endif %}
+      </h1>
 
       <form action="which-services" method="post" class="form">
 
         <div class="form-group" data-required="Custom error message goes here">
           <fieldset class=''>
-            <label class="form-label" for="application-persona">
-              <span class='visually-hidden'>Appliaction persona</span>
-
+            <label class="form-label" for="activeService">
+              <span class='visually-hidden'>Are you retired from the armed forces?</span>
             </label>
 
-
-            <!-- Arguments: 'name', 'label', 'id' -->
-            {{ forms.radio_button( 'active-service', 'Yes', 'yes') }}
-            {{ forms.radio_button( 'active-service', 'No, I’m currently serving', 'currently') }}
-
+            <!-- id, name, value, label -->
+            {{ forms.radio_button( 'activeServiceRetired', 'activeService', 'retired', 'Yes') }}
+            {% if data['applicationPerson'] == 'yesMyself' %}
+              {{ forms.radio_button( 'activeServiceServing', 'activeService', 'serving', 'No, I’m currently serving') }}
+            {% else %}
+              {{ forms.radio_button( 'activeServiceServing', 'activeService', 'serving', 'No, they’re currently serving') }}
+            {% endif %}
           </fieldset>
         </div>
 
-        <!-- Arguments: 'button text' -->
+        <!-- 'button text' -->
         {{ forms.save_button( 'Continue' ) }}
 
       </div>

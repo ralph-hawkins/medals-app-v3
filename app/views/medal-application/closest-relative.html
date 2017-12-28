@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Medals application
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main" data-errorHeading="Message to alert the user to a problem goes here" data-errorDescription="Optional description of the errors and how to correct them">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">How were you related to the service&nbsp;person?</h1>
+
+      <form action="/medal-application/death-in-service" method="post" class="form">
+
+        <div class="form-group" data-required="Custom error message goes here">
+          <fieldset class=''>
+            <label class="form-label" for="relationship">
+              <span class='question-lead'>They were my:</span>
+            </label>
+
+            <!-- id, name, value, label -->
+            {{ forms.radio_button
+              ( 'relationship-spouse', 'relationship', 'relationshipSpouse', 'Husband, wife or civil partner') }}
+            {{ forms.radio_button
+              ( 'relationship-child', 'relationship', 'relationshipChild', 'Child') }}
+            {{ forms.radio_button
+              ( 'relationship-parent', 'relationship', 'relationshipParent', 'Parent') }}
+            {{ forms.radio_button
+              ( 'relationship-sibling', 'relationship', 'relationshipSibling', 'Sibling') }}
+            {{ forms.radio_button
+              ( 'relationship-grand-parent', 'relationship', 'relationshipGrandParent', 'Grand parent') }}
+            {{ forms.radio_button
+              ( 'relationship-aunt-uncle', 'relationship', 'relationshipAuntUncle', 'Aunt or uncle') }}
+            {{ forms.radio_button
+              ( 'relationship-niece-nephew', 'relationship', 'relationshipNieceNephew', 'Niece or nephew') }}
+          </fieldset>
+        </div>
+
+        <!-- 'button text' -->
+        {{ forms.save_button( 'Continue' ) }}
+
+      </div>
+    </form>
+  </div>
+</main>
+
+{% endblock %}

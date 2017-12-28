@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Medals application
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main" data-errorHeading="Message to alert the user to a problem goes here" data-errorDescription="Optional description of the errors and how to correct them">
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">Did the service person die in service?</h1>
+
+      <form action="/medal-application/which-services" method="post" class="form">
+        <div class='form-group'>
+          <fieldset>
+            <label class='form-label' for='diedInService'>
+              <span class='visually-hidden'>Did the service&nbsp;person die in service?</span>
+            </label>
+
+            <!-- id, name, value, label -->
+            {{ forms.radio_button( 'diedInServiceTrue', 'diedInService', 'diedInServiceTrue', 'Yes' ) }}
+            {{ forms.radio_button( 'diedInServiceFalse', 'diedInService', 'diedInServiceFalse', 'No' ) }}
+
+          </fieldset>
+        </div>
+
+        <!-- 'button text' -->
+        {{ forms.save_button( 'Continue' ) }}
+
+      </form>
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

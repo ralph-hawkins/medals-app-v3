@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Medals application
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      {% if data['applicationPerson'] == 'yesMyself' %}
+        <h1 class="heading-large">
+          You must apply through your unit
+        </h1>
+      {% else %}
+        <h1 class="heading-large">
+          Applications must be made through the service person’s unit
+        </h1>
+      {% endif %}
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

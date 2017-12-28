@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Medals application
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main" data-errorHeading="Message to alert the user to a problem goes here" data-errorDescription="Optional description of the errors and how to correct them">
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">Is there a living husband, wife or civil&nbsp;partner?</h1>
+
+      <form action="/medal-application/death-in-service" method="post" class="form">
+        <div class='form-group'>
+          <fieldset>
+            <label class='form-label' for='partner'>
+              <span class='visually-hidden'>Is there a living husband, wife or civil partner?</span>
+            </label>
+
+            <!-- id, name, value, label -->
+            {{ forms.radio_button( 'partnerTrue', 'partner', 'partnerTrue', 'Yes' ) }}
+            {{ forms.radio_button( 'partnerFalse', 'partner', 'partnerFalse', 'No' ) }}
+
+          </fieldset>
+        </div>
+
+        <!-- 'button text' -->
+        {{ forms.save_button( 'Continue' ) }}
+
+      </form>
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
