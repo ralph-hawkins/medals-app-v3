@@ -1,0 +1,56 @@
+{% macro textbox(id) %}
+    <input class="form-control form-control-2-3" id="{{ id }}"></textarea>
+{% endmacro %}
+
+{% macro textbox_short(id) %}
+    <input class="form-control form-control-1-3" id="{{ id }}"></textarea>
+{% endmacro %}
+
+{% macro textbox_large(id) %}
+    <textarea class="form-control form-control-2-3" id="{{ id }}" rows='5'></textarea>
+{% endmacro %}
+
+{% macro radio_button( name, label, id ) %}
+  <div class="multiple-choice">
+    <input id="{{ id }}" type="radio" name="{{ name }}" value="{{ label }}">
+    <label for="{{ id }}">{{ label }}</label>
+  </div>
+{% endmacro %}
+
+{% macro boolean( id_yes, id_no, name, label_yes, label_no) %}
+  <div class="multiple-choice">
+    <input id="{{ id_yes }}" type="radio" name="{{ name }}" value="Yes">
+    <label for="{{ id_yes }}">{{ label_yes }}</label>
+  </div>
+        
+  <div class="multiple-choice">
+    <input id="{{ id_no }}" type="radio" name="{{ name }}" value="No">
+    <label for="{{ id_no }}">{{ label_no }}</label>
+  </div>
+{% endmacro %}
+
+{% macro radio_button_with_follow_up( followup_id, id, name, label, followup_label ) %}
+
+      <div class="multiple-choice" data-target="{{ followup_id }}">
+        <input id="{{ id }}" type="radio" name="{{ name }}" value="{{ id }}">
+        <label for="{{ id }}">{{ label }}</label>
+      </div>
+      <div class="panel panel-border-narrow js-hidden" id="{{ followup_id }}">
+        <label class="form-label" for="{{ followup_id }}">{{ followup_label }}</label>
+        <input class="form-control" name="{{ followup_id }}" type="text" id="{{ followup_id }}">
+      </div>
+
+{% endmacro %}
+
+
+
+{% macro checkbox( name, label, id ) %}
+  <div class="multiple-choice">
+    <input id="{{ id }}" type="checkbox" name="{{ name }}" value="{{ label }}">
+    <label for="{{ id }}">{{ label }}</label>
+  </div>
+{% endmacro %}
+
+{% macro save_button(buttonText='Save and continue') %}
+  <button class="button" type="submit">{{ buttonText }}</button>
+{% endmacro %}

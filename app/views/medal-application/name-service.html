@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main" data-errorHeading="Message to alert the user to a problem goes here" data-errorDescription="Optional description of the errors and how to correct them">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">What is your name?</h1>
+
+      <form action="different-name" method="post" class="form">
+
+        <div class="form-group">
+
+          <fieldset class=''>
+
+            <label class="form-label" for="service-start">Full name</label>
+            {{ forms.textbox( 'service-person-name' ) }}
+
+          </fieldset>
+        </div>
+
+        <!-- Arguments: 'button text' -->
+        {{ forms.save_button( 'Continue' ) }}
+
+      </div>
+    </form>
+  </div>
+</main>
+
+{% endblock %}

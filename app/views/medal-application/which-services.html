@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main" data-errorHeading="Message to alert the user to a problem goes here" data-errorDescription="Optional description of the errors and how to correct them">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">Which organisations did you serve with?</h1>
+
+      <form action="service-details" method="post" class="form">
+
+        <div class="form-group" data-required="Custom error message goes here">
+          <fieldset class=''>
+            <label class="form-label" for="military-orgs">
+              <span class='visually-hidden'>List of military organisations</span>
+
+            </label>
+
+
+            <!-- Arguments: 'name', 'label', 'id' -->
+            {{ forms.checkbox( 'organisations', 'Army', 'army') }}
+            {{ forms.checkbox( 'organisations', 'Home guard', 'home-guard') }}
+            {{ forms.checkbox( 'organisations', 'Royal Air force', 'raf') }}
+            {{ forms.checkbox( 'organisations', 'Royal Navy', 'navy') }}
+
+            <p class='or'>
+              
+            </p>
+
+            <div class="multiple-choice">
+              <input id="other-orgs" 
+                     type="checkbox" 
+                     name="organisations"
+                     value="Other organisations"
+              >
+              <label for="other-orgs">
+                Other organisations
+                <br>
+                <span class='label-explanation'>
+                  For example Civil defense service, Royal Fleet Auxillary or Merchant Navy.
+                </span>
+              </label>
+            </div>
+
+
+            <!--
+              Put this for not myself route
+            {{ forms.checkbox( 'organisations', 'yes') }}
+            -->
+
+          </fieldset>
+        </div>
+
+        <!-- Arguments: 'button text' -->
+        {{ forms.save_button( 'Continue' ) }}
+
+      </div>
+    </form>
+  </div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main" data-errorHeading="Message to alert the user to a problem goes here" data-errorDescription="Optional description of the errors and how to correct them">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">Are you applying for yourself?</h1>
+
+      <form action="active-service" method="post" class="form">
+
+        <div class="form-group" data-required="Custom error message goes here">
+          <fieldset class=''>
+            <label class="form-label" for="application-persona">
+              <span class='visually-hidden'>Appliaction persona</span>
+
+            </label>
+
+
+            <!-- Arguments: 'name', 'label', 'id' -->
+            {{ forms.radio_button( 'application-persona', 'Yes', 'yes') }}
+            {{ forms.radio_button( 'application-persona', 'No, I’m applying on behalf of a service person', 'behalf-of-relative') }}
+            {{ forms.radio_button( 'application-persona', 'No, I’m applying for the medals of a deceased relative ', 'relative-of-deceased') }}
+
+          </fieldset>
+        </div>
+
+        <!-- Arguments: 'button text' -->
+        {{ forms.save_button( 'Continue' ) }}
+
+      </div>
+    </form>
+  </div>
+</main>
+
+{% endblock %}

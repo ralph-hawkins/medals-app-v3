@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main" data-errorHeading="Message to alert the user to a problem goes here" data-errorDescription="Optional description of the errors and how to correct them">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">How do you want to be contacted about your application?</h1>
+
+      <form action="post-address" method="post" class="form">
+
+        <div class="form-group" data-required="Custom error message goes here">
+          <fieldset>
+            <label class="form-label" for="tenancy-type">
+              <span class='visually-hidden'>Contact preference</span>
+
+            </label>
+
+            {{ forms.radio_button_with_follow_up( 'email-address', 'email', 'contact-preference', 'Email', 'Email address' ) }}
+            {{ forms.radio_button_with_follow_up( 'phone-number', 'phone', 'contact-preference', 'Phone', 'Phone number' ) }}
+            {{ forms.radio_button_with_follow_up( 'text-message', 'textmessage', 'contact-preference', 'Text message', 'Phone number' ) }}
+
+          </fieldset>
+        </div>
+
+
+
+        <!-- Arguments: 'button text' -->
+        {{ forms.save_button( 'Continue' ) }}
+
+      </div>
+    </form>
+  </div>
+</main>
+
+{% endblock %}

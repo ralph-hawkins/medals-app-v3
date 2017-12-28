@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main" data-errorHeading="Message to alert the user to a problem goes here" data-errorDescription="Optional description of the errors and how to correct them">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">Where do you want the medals posted?</h1>
+
+      <p>
+        Medal applications usually take 6 to 8 weeks to process. If you move during this time, please contact <a href='medal-enquiries@mod.gov.uk'>medal-enquiries@mod.gov.uk</a>.
+      </p>
+
+      <form action="check-your-answers" method="post" class="form">
+
+        <div class="form-group" data-required="Custom error message goes here">
+          <fieldset>
+            <label class="form-label" for="postal-address">
+              Full address
+            </label>
+
+            {{ forms.textbox_large( 'postal-address' ) }}
+
+          </fieldset>
+        </div>
+
+
+
+        <!-- Arguments: 'button text' -->
+        {{ forms.save_button( 'Continue' ) }}
+
+      </div>
+    </form>
+  </div>
+</main>
+
+{% endblock %}
