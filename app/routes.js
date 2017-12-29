@@ -17,13 +17,14 @@ router.post('/medal-application/active-service', function (req, res) {
 
   var applicationPerson = req.body.applicationPerson
 
-  if (applicationPerson == 'relativeOfDeceased') {
+  if (applicationPerson == 'relativeOfDeceased')
+    { res.redirect('/medal-application/closest-relative') }
 
-    res.redirect('/medal-application/closest-relative')
-  } else {
+  else if (applicationPerson ==  'behalfOfRelative')
+    { res.redirect('/medal-application/active-service-third-party') }
 
-    res.redirect('/medal-application/active-service')
-  }
+  else 
+    { res.redirect('/medal-application/active-service') }
 })
 
 //Are you retired from the armed forces?
@@ -37,6 +38,32 @@ router.post('/medal-application/which-services', function (req, res) {
 
   else {
     res.redirect('/medal-application/which-services')  }
+})
+
+//Is the service person retired from the armed forces?
+router.post('/medal-application/lpa', function (req, res) {
+
+  var active3rdParty = req.body.active3rdParty
+
+
+  if (active3rdParty == 'serving') {
+    res.redirect('/medal-application/ineligible-still-serving')  }
+
+  else {
+    res.redirect('/medal-application/lpa')  }
+})
+
+//Do you have lasting power of attorney for the service&nbsp;person?
+router.post('/medal-application/lpa-upload', function (req, res) {
+
+  var lpa = req.body.lpa
+
+
+  if (lpa == 'lpaNo') {
+    res.redirect('/medal-application/ineligible-no-lpa')  }
+
+  else {
+    res.redirect('/medal-application/lpa-upload')  }
 })
 
 //How were you related to the service person?
@@ -81,14 +108,116 @@ router.post('/medal-application/death-in-service', function (req, res) {
 })
 
 //Did the service person die in service?
-router.post('/medal-application/which-services', function (req, res) {
+router.post('/medal-application/evidence-of-death', function (req, res) {
 
   var diedInService = req.body.diedInService
 
 
-  if (diedInService == 'diedInServiceFalse') {
-    res.redirect('/medal-application/death-in-service-evidence')  }
+  if (diedInService == 'diedInServiceYes') {
+    res.redirect('/medal-application/which-services')  }
 
   else {
-    res.redirect('/medal-application/which-services')  }
+    res.redirect('/medal-application/evidence-of-death')  }
+})
+
+//Were you known by other names while in the military?
+router.post('/medal-application/contact-preference', function (req, res) {
+
+  var otherName = req.body.otherName
+
+
+  if (otherName == 'otherNameYes') {
+    res.redirect('/medal-application/alternative-name')  }
+
+  else {
+    res.redirect('/medal-application/contact-preference')  }
+})
+
+//Is there a living husband, wife or civil partner?
+router.post('/medal-application/parent', function (req, res) {
+
+  var partner = req.body.partner
+
+
+  if (partner == 'partnerYes') {
+    res.redirect('/medal-application/ineligible-living-spouse')  }
+
+  else {
+    res.redirect('/medal-application/parent')  }
+})
+
+//Are you the service persons Mother or Father?
+router.post('/medal-application/death-in-service', function (req, res) {
+
+  var parent = req.body.parent
+
+  if (parent == 'parentMother') {
+    res.redirect('/medal-application/living-father')  }
+
+  else {
+    res.redirect('/medal-application/death-in-service')  }
+})
+
+//Is the service persons Father alive?
+router.post('/medal-application/death-in-service', function (req, res) {
+
+  var livingFather = req.body.livingFather
+
+
+  if (livingFather == 'livingFatherYes') {
+    res.redirect('/medal-application/ineligible-living-father')  }
+
+  else {
+    res.redirect('/medal-application/death-in-service')  }
+})
+
+//Is there a living husband, wife or civil partner?
+router.post('/medal-application/eldest-child', function (req, res) {
+
+  var partnerOrSpouse = req.body.partnerOrSpouse
+
+
+  if (partnerOrSpouse == 'partnerOrSpouseYes') {
+    res.redirect('/medal-application/ineligible-living-spouse-or-parent')  }
+
+  else {
+    res.redirect('/medal-application/eldest-child')  }
+})
+
+//Are you the service persons eldest living child?
+router.post('/medal-application/death-in-service', function (req, res) {
+
+  var eldestChild = req.body.eldestChild
+
+
+  if (eldestChild == 'eldestChildYes') {
+    res.redirect('/medal-application/ineligible-not-eldest-child')  }
+
+  else {
+    res.redirect('/medal-application/death-in-service')  }
+})
+
+//Do you have a copy of the death certificate you can provide?
+router.post('/medal-application/death-certificate-upload', function (req, res) {
+
+  var deathCert = req.body.deathCert
+
+
+  if (deathCert == 'deathCertNo') {
+    res.redirect('/medal-application/other-evidence')  }
+
+  else {
+    res.redirect('/medal-application/death-certificate-upload')  }
+})
+
+//Do you have any other proof the service person has died?
+router.post('/medal-application/other-evidence-upload', function (req, res) {
+
+  var otherEvidence = req.body.otherEvidence
+
+  if (otherEvidence == 'otherEvidenceNo') {
+    res.redirect('/medal-application/ineligible-no-evidence')  }
+
+  else {
+    res.redirect('/medal-application/other-evidence-upload')  }
 })

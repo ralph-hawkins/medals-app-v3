@@ -10,24 +10,24 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <h1 class="heading-large">Are you applying for medals awared to you?</h1>
+      <h1 class="heading-large">
+          Is the service&nbsp;person retired from the armed forces?
+      </h1>
 
-      <form action="/medal-application/active-service" method="post" class="form">
+      <form action="lpa" method="post" class="form">
 
         <div class="form-group" data-required="Custom error message goes here">
           <fieldset class=''>
-            <label class="form-label" for="applicationPerson">
-              <span class='visually-hidden'>Application person</span>
+            <label class="form-label" for="active3rdParty">
+              <span class='visually-hidden'>Is the service person retired from the armed forces?</span>
             </label>
 
             <!-- id, name, value, label -->
             {{ forms.radio_button
-              ( 'person-self', 'applicationPerson', 'yesMyself', 'Yes') }}
+              ( 'active3rdPartyRetired', 'active3rdParty', 'retired', 'Yes') 
+            }}
             {{ forms.radio_button
-              ( 'person-behalf-of-service', 'applicationPerson', 'behalfOfRelative', 'No, I’m applying on behalf of someone else') }}
-            {{ forms.radio_button
-              ( 'person-relative', 'applicationPerson', 'relativeOfDeceased', 'No, I’m applying for the medals of a deceased relative') }}
-
+              ( 'active3rdPartyServing', 'active3rdParty', 'serving', 'No, they’re currently serving') }}
           </fieldset>
         </div>
 

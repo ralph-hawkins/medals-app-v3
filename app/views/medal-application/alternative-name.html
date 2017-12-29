@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Medals application
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main" data-errorHeading="Message to alert the user to a problem goes here" data-errorDescription="Optional description of the errors and how to correct them">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">Other names held during service</h1>
+
+      <form action="/medal-application/contact-preference" method="post" class="form">
+
+        <div class="form-group">
+          <fieldset class='inline'>
+            <label class="form-label" for="otherName">
+              <span class=''>Full name</span>
+
+            </label>
+
+            <!-- Arguments: 'id yes', 'id no', 'name' -->
+            {{ forms.textbox( ) }}
+
+          </fieldset>
+        </div>
+
+        <div class='add-another'>
+          <span class='add-link' id="addName">
+            Add another name
+          </span>
+
+          <div class="form-group js-hidden" id='addNameBox'>
+            <fieldset class=''>
+              <label class="form-label" for="otherName">
+                <span class=''>Full name</span>
+              </label>
+
+              {{ forms.textbox( ) }}
+
+            </fieldset>
+          </div>
+
+          <span class='add-link js-hidden' id="removeName">
+            Remove name
+          </span>
+        </div>
+
+        <!-- Arguments: 'button text' -->
+        {{ forms.save_button( 'Continue' ) }}
+      </form>
+    </div>
+  </div>
+</main>
+
+{% endblock %}

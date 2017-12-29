@@ -16,5 +16,18 @@ $(document).ready(function () {
   // to toggle hidden content
   var showHideContent = new GOVUK.ShowHideContent()
   showHideContent.init()
-})
 
+  $( "#addName" ).click(function() {
+    console.log('clicked')
+    $( "#addNameBox" ).toggleClass( 'js-hidden' );
+    $( "#addName" ).toggleClass( 'js-hidden' );
+    $( "#removeName" ).toggleClass( 'js-hidden' );
+  });
+
+  $( "#removeName" ).click(function() {
+    console.log('clicked')
+    $( "#addNameBox" ).toggleClass( 'js-hidden' );
+    $( "#addName" ).toggleClass( 'js-hidden' );
+    $( "#removeName" ).toggleClass( 'js-hidden' );
+  });
+})

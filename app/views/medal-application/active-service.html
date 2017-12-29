@@ -11,11 +11,7 @@
     <div class="column-two-thirds">
 
       <h1 class="heading-large">
-        {% if data['applicationPerson'] == 'yesMyself' %}
           Are you retired from the armed forces?
-        {% else %}
-          Is the service&nbsp;person retired from the armed forces?
-        {% endif %}
       </h1>
 
       <form action="which-services" method="post" class="form">
@@ -27,12 +23,12 @@
             </label>
 
             <!-- id, name, value, label -->
-            {{ forms.radio_button( 'activeServiceRetired', 'activeService', 'retired', 'Yes') }}
-            {% if data['applicationPerson'] == 'yesMyself' %}
-              {{ forms.radio_button( 'activeServiceServing', 'activeService', 'serving', 'No, I’m currently serving') }}
-            {% else %}
-              {{ forms.radio_button( 'activeServiceServing', 'activeService', 'serving', 'No, they’re currently serving') }}
-            {% endif %}
+            {{ forms.radio_button
+              ( 'activeServiceRetired', 'activeService', 'retired', 'Yes') 
+            }}
+            {{ forms.radio_button
+              ( 'activeServiceServing', 'activeService', 'serving', 'No, I’m currently serving') 
+            }}
           </fieldset>
         </div>
 

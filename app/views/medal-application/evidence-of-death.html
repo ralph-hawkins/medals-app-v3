@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Medals application
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main" >
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">Do you have a copy of the death certificate you can provide?</h1>
+
+      <form action="/medal-application/death-certificate-upload" method="post" class="form">
+        <div class="form-group" data-required="Custom error message goes here">
+          <fieldset class='inline'>
+            <label class="form-label" for="deathCert">
+              <span class='visually-hidden'>Other names</span>
+            </label>
+
+            {{ forms.radio_button( 'deathCertYes', 'deathCert', 'deathCertYes', 'Yes' ) }}
+            {{ forms.radio_button( 'deathCertNo', 'deathCert', 'deathCertNo', 'No' ) }}
+
+          </fieldset>
+       </div>
+
+       {{ forms.save_button( 'Continue' ) }}
+     </form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

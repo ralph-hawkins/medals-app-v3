@@ -10,13 +10,13 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      {% if data['applicant'] == 'Yes' %}
+      {% if data['applicationPerson'] == 'yesMyself' %}
         <h1 class="heading-large">Which organisations did you serve with?</h1>
       {% else %}
         <h1 class="heading-large">Which organisations did the service&nbsp;person serve with?</h1>
       {% endif %}
 
-      <form action="service-details" method="post" class="form">
+      <form action="service-details-army" method="post" class="form">
 
         <div class="form-group" data-required="Custom error message goes here">
           <fieldset class=''>
@@ -50,7 +50,7 @@
             </div>
 
 
-            {% if data['applicant'] != 'Yes' %}
+            {% if data['applicationPerson'] == 'relativeOfDeceased' %}
 
             <p class='or'>
               Or

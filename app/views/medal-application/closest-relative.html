@@ -10,7 +10,11 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <h1 class="heading-large">How were you related to the service&nbsp;person?</h1>
+      <h1 class="heading-large">How was the service&nbsp;person related to you?</h1>
+
+      <p>
+        Medals can only be given to the closest living relative as defined by <a href='https://www.gov.uk/inherits-someone-dies-without-will'>intestacy&nbsp;rules</a>.
+      </p>
 
       <form action="/medal-application/death-in-service" method="post" class="form">
 
@@ -28,7 +32,7 @@
             {{ forms.radio_button
               ( 'relationship-parent', 'relationship', 'relationshipParent', 'Parent') }}
             {{ forms.radio_button
-              ( 'relationship-sibling', 'relationship', 'relationshipSibling', 'Sibling') }}
+              ( 'relationship-sibling', 'relationship', 'relationshipSibling', 'Brother or sister') }}
             {{ forms.radio_button
               ( 'relationship-grand-parent', 'relationship', 'relationshipGrandParent', 'Grand parent') }}
             {{ forms.radio_button

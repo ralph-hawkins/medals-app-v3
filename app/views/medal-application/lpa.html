@@ -10,24 +10,27 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <h1 class="heading-large">Are you applying for medals awared to you?</h1>
+      <h1 class="heading-large">
+          Do you have lasting power of attorney for the service&nbsp;person?
+      </h1>
 
-      <form action="/medal-application/active-service" method="post" class="form">
+      <form action="lpa-upload" method="post" class="form">
 
         <div class="form-group" data-required="Custom error message goes here">
-          <fieldset class=''>
-            <label class="form-label" for="applicationPerson">
-              <span class='visually-hidden'>Application person</span>
+          <fieldset class='inline'>
+            <label class="form-label" for="lpa">
+              <span class='visually-hidden'>
+                Do you have lasting power of attorney for the service&nbsp;person?
+              </span>
             </label>
 
             <!-- id, name, value, label -->
             {{ forms.radio_button
-              ( 'person-self', 'applicationPerson', 'yesMyself', 'Yes') }}
+              ( 'lpaYes', 'lpa', 'lpaYes', 'Yes') 
+            }}
             {{ forms.radio_button
-              ( 'person-behalf-of-service', 'applicationPerson', 'behalfOfRelative', 'No, I’m applying on behalf of someone else') }}
-            {{ forms.radio_button
-              ( 'person-relative', 'applicationPerson', 'relativeOfDeceased', 'No, I’m applying for the medals of a deceased relative') }}
-
+              ( 'lpaNo', 'lpa', 'lpaNo', 'No') 
+            }}
           </fieldset>
         </div>
 

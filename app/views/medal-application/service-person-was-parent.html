@@ -10,21 +10,23 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <h1 class="heading-large">Did the service&nbsp;person die in service?</h1>
+      <h1 class="heading-large">
+        Is there a living husband, wife, civil&nbsp;partner or parent of the service&nbsp;person?
+      </h1>
 
-      <form action="/medal-application/evidence-of-death" method="post" class="form">
+      <form action="/medal-application/eldest-child" method="post" class="form">
 
         <div class="form-group" data-required="Custom error message goes here">
           <fieldset class='inline'>
-
-            <label class="form-label" for="otherName">
+            <label class="form-label" for="partnerOrSpouse">
               <span class='visually-hidden'>Other names</span>
+
             </label>
 
 
             <!-- Arguments: 'id yes', 'id no', 'name' -->
-            {{ forms.radio_button( 'diedInServiceYes', 'diedInService', 'diedInServiceYes', 'Yes' ) }}
-            {{ forms.radio_button( 'diedInServiceNo', 'diedInService', 'diedInServiceNo', 'No' ) }}
+            {{ forms.radio_button( 'partnerOrSpouseNo', 'partnerOrSpouse', 'partnerOrSpouseNo', 'No' ) }}
+            {{ forms.radio_button( 'partnerOrSpouseYes', 'partnerOrSpouse', 'partnerOrSpouseYes', 'Yes' ) }}
 
           </fieldset>
         </div>

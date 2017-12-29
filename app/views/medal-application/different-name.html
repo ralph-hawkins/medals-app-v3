@@ -10,24 +10,28 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <h1 class="heading-large">Were you known by other names while in the military?</h1>
-
+      {% if data['applicationPerson'] == 'yesMyself' %}
+        <h1 class="heading-large">Were you known by other names during service?</h1>
+      {% else %}
+        <h1 class="heading-large">Was the service person known by other names during service?</h1>
+      {% endif %}
       <p>
-        This could include your pre-marital name.
+        This can include pre and post marital names.
       </p>
 
-      <form action="contact-preference" method="post" class="form">
+      <form action="/medal-application/contact-preference" method="post" class="form">
 
         <div class="form-group" data-required="Custom error message goes here">
           <fieldset class='inline'>
-            <label class="form-label" for="tenancy-type">
+            <label class="form-label" for="otherName">
               <span class='visually-hidden'>Other names</span>
 
             </label>
 
 
             <!-- Arguments: 'id yes', 'id no', 'name' -->
-            {{ forms.boolean( 'other_name_no', 'other_name_yes', 'other_name', 'No', 'Yes' ) }}
+            {{ forms.radio_button( 'otherNameNo', 'otherName', 'otherNameNo', 'No' ) }}
+            {{ forms.radio_button( 'otherNameYes', 'otherName', 'otherNameYes', 'Yes' ) }}
 
           </fieldset>
         </div>

@@ -40,8 +40,29 @@ $path: "/public/images/";
   @include core-16;
 }
 
-//white space
 .question-lead {
   display: block;
+  font-weight: bold;
   margin-bottom: 10px;
+}
+
+.upload-label {
+  padding-bottom: 10px;
+  display: block;
+}
+
+.add-another {
+  display: block;
+  padding-bottom: 20px;
+}
+
+.add-link {
+  text-decoration: underline;
+  color: $link-colour;
+  display: inline-block;
+  margin-bottom: 10px;
+  &:hover {
+    color: $link-hover-colour;
+    cursor: pointer;
+  }
 }

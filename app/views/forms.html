@@ -12,12 +12,7 @@
 
 {% macro radio_button( id, name, value, label ) %}
   <div class="multiple-choice">
-    <input 
-    id="{{ id }}" 
-    name="{{ name }}" 
-    type="radio" 
-    value="{{ value }}" 
-    {{ checked("{{ name }}", "{{ label }}") }}>
+    <input id="{{ id }}" name="{{ name }}" type="radio" value="{{ value }}" {{ checked("{{ name }}", "{{ label }}") }}>
     <label for="{{ id }}">{{ label }}</label>
   </div>
 {% endmacro %}

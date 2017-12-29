@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Medals application
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main" >
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">
+        Do you have any other proof the service person has died?
+      </h1>
+
+      <p>
+        For example an obituary.
+      </p>
+
+      <form action="/medal-application/other-evidence-upload" method="post" class="form">
+        <div class="form-group" data-required="Custom error message goes here">
+          <fieldset class='inline'>
+            <label class="form-label" for="otherEvidence">
+              <span class='visually-hidden'>Other names</span>
+            </label>
+
+            {{ forms.radio_button( 'otherEvidenceYes', 'otherEvidence', 'otherEvidenceYes', 'Yes' ) }}
+            {{ forms.radio_button( 'otherEvidenceNo', 'otherEvidence', 'otherEvidenceNo', 'No' ) }}
+
+          </fieldset>
+       </div>
+
+       {{ forms.save_button( 'Continue' ) }}
+     </form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

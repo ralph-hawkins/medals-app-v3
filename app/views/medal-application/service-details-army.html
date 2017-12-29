@@ -10,7 +10,12 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <h1 class="heading-large">Details of your Army service</h1>
+
+      {% if data['applicationPerson'] == 'yesMyself' %}
+        <h1 class="heading-large">Details of your Army service</h1>
+      {% else %}
+        <h1 class="heading-large">Details of Army service</h1>
+      {% endif %}
 
       <form action="name-service" method="post" class="form">
 

@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Medals application
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main" >
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">Upload a copy of lasting power of attorney certificate(?)</h1>
+
+      <p>
+        **Something about what is required**
+      </p>
+
+      <form action="/medal-application/which-services" method="post" class="form">
+
+        <div class="form-group">
+
+          <label class='form-label' for="input-death-certificate">
+            <span class="upload-label">
+              Please upload a image file
+            </span>
+          </label>
+          <input
+            type="file"
+            name="death-certificate"
+            id="input-death-certificate"
+            class="file-upload-input"/>
+        </div>
+
+
+        <!-- Arguments: 'button text' -->
+        {{ forms.save_button( 'Continue' ) }}
+
+      </form>
+    </div>
+  </div>
+</main>
+
+{% endblock %}

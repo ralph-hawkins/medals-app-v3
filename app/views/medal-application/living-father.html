@@ -10,28 +10,23 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <h1 class="heading-large">Is there a living husband, wife or civil&nbsp;partner?</h1>
+      <h1 class="heading-large">Is the service person’s Father alive?</h1>
 
-      <form action="/medal-application/parent" method="post" class="form">
+      <form action="/medal-application/death-in-service" method="post" class="form">
 
         <div class="form-group" data-required="Custom error message goes here">
-          <fieldset class='inline'>
-            <label class="form-label" for="partner">
-              <span class='visually-hidden'>Other names</span>
+          <fieldset class=''>
 
+            <label class="form-label" for="livingFather">
+              <span class='visually-hidden'>Is there a living Father?</span>
             </label>
 
-
-            <!-- Arguments: 'id yes', 'id no', 'name' -->
-            {{ forms.radio_button( 'partnerNo', 'partner', 'partnerNo', 'No' ) }}
-            {{ forms.radio_button( 'partnerYes', 'partner', 'partnerYes', 'Yes' ) }}
+            {{ forms.radio_button( 'livingFatherYes', 'livingFather', 'livingFatherYes', 'Yes' ) }}
+            {{ forms.radio_button( 'livingFatherNo', 'livingFather', 'livingFatherNo', 'No' ) }}
 
           </fieldset>
         </div>
 
-
-
-        <!-- Arguments: 'button text' -->
         {{ forms.save_button( 'Continue' ) }}
 
       </div>
