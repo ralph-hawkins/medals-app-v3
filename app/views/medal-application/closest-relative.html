@@ -10,10 +10,10 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <h1 class="heading-large">How was the service&nbsp;person related to you?</h1>
+      <h1 class="heading-large">How are you related to the service&nbsp;person?</h1>
 
       <p>
-        Medals can only be given to the closest living relative as defined by <a href='https://www.gov.uk/inherits-someone-dies-without-will'>intestacy&nbsp;rules</a>.
+        We need to know your reltionship to the service&nbsp;person to determine if you’re eligble to recieve the medals.
       </p>
 
       <form action="/medal-application/death-in-service" method="post" class="form">
@@ -21,28 +21,39 @@
         <div class="form-group" data-required="Custom error message goes here">
           <fieldset class=''>
             <label class="form-label" for="relationship">
-              <span class='question-lead'>They were my:</span>
+              <span class='question-lead'>I am their:</span>
             </label>
 
-            <!-- id, name, value, label -->
-            {{ forms.radio_button
-              ( 'relationship-spouse', 'relationship', 'relationshipSpouse', 'Husband, wife or civil partner') }}
-            {{ forms.radio_button
-              ( 'relationship-child', 'relationship', 'relationshipChild', 'Child') }}
-            {{ forms.radio_button
-              ( 'relationship-parent', 'relationship', 'relationshipParent', 'Parent') }}
-            {{ forms.radio_button
-              ( 'relationship-sibling', 'relationship', 'relationshipSibling', 'Brother or sister') }}
-            {{ forms.radio_button
-              ( 'relationship-grand-parent', 'relationship', 'relationshipGrandParent', 'Grand parent') }}
-            {{ forms.radio_button
-              ( 'relationship-aunt-uncle', 'relationship', 'relationshipAuntUncle', 'Aunt or uncle') }}
-            {{ forms.radio_button
-              ( 'relationship-niece-nephew', 'relationship', 'relationshipNieceNephew', 'Niece or nephew') }}
+            {# groupName, name, label, target="" #}
+            {{ forms.radio
+              ( 'relationship', 'relationshipSpouse', 'Husband, wife or civil partner') }}
+            {{ forms.radio
+              ( 'relationship', 'relationshipParent', 'Parent', 'parentType') }}
+            <div class="panel panel-border-narrow js-hidden " id="parentType">
+              <p class='bold'>
+                Are you their mother or father?
+              </p>
+              <div class="form-group">
+                {# groupName, name, label, target #}
+                {{ forms.radio
+                  ('parentType', 'parentMother', 'Mother') }}
+                {{ forms.radio
+                  ('parentType', 'parentFather', 'Father') }}
+              </div>
+            </div>
+            {{ forms.radio
+              ( 'relationship', 'relationshipChild', 'Child') }}
+            {{ forms.radio
+              ( 'relationship', 'relationshipSibling', 'Brother or sister') }}
+            {{ forms.radio
+              ( 'relationship', 'relationshipGrandChild', 'Grandchild') }}
+            {{ forms.radio
+              ( 'relationship', 'relationshipAuntUncle', 'Aunt or uncle') }}
+            {{ forms.radio
+              ( 'relationship', 'relationshipNieceNephew', 'Niece or nephew') }}
           </fieldset>
         </div>
 
-        <!-- 'button text' -->
         {{ forms.save_button( 'Continue' ) }}
 
       </div>
@@ -51,3 +62,4 @@
 </main>
 
 {% endblock %}
+

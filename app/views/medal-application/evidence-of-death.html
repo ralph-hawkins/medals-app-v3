@@ -19,8 +19,9 @@
               <span class='visually-hidden'>Other names</span>
             </label>
 
-            {{ forms.radio_button( 'deathCertYes', 'deathCert', 'deathCertYes', 'Yes' ) }}
-            {{ forms.radio_button( 'deathCertNo', 'deathCert', 'deathCertNo', 'No' ) }}
+            {# ( groupName, name, label, target="" ) #}
+            {{ forms.radio( 'deathCert', 'deathCertYes', 'Yes' ) }}
+            {{ forms.radio( 'deathCert', 'deathCertNo', 'No' ) }}
 
           </fieldset>
        </div>

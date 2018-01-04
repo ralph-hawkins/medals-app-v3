@@ -10,7 +10,7 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <h1 class="heading-large">Are you the service person’s Mother or Father?</h1>
+      <h1 class="heading-large">Are you the service person’s mother or father?</h1>
 
       <form action="/medal-application/death-in-service" method="post" class="form">
 
@@ -18,11 +18,12 @@
           <fieldset class=''>
 
             <label class="form-label" for="parent">
-              <span class='visually-hidden'>Are you the service person’s Mother or Father?</span>
+              <span class='visually-hidden'>Are you the service person’s mother or father?</span>
             </label>
 
-            {{ forms.radio_button( 'parentMother', 'parent', 'parentMother', 'Mother' ) }}
-            {{ forms.radio_button( 'parentFather', 'parent', 'parentFather', 'Father' ) }}
+            {# groupName, name, label, target="" #}
+            {{ forms.radio( 'parent', 'parentMother', 'Mother' ) }}
+            {{ forms.radio( 'parent', 'parentFather', 'Father' ) }}
 
           </fieldset>
         </div>

@@ -56,7 +56,7 @@ $path: "/public/images/";
   padding-bottom: 20px;
 }
 
-.add-link {
+.add-link, .add-link-secondary {
   text-decoration: underline;
   color: $link-colour;
   display: inline-block;
@@ -65,4 +65,22 @@ $path: "/public/images/";
     color: $link-hover-colour;
     cursor: pointer;
   }
+}
+
+.add-link-secondary {
+  margin-top: 20px;
+}
+
+.before-list {
+  margin-bottom: 0px;
+}
+
+.table-list {
+  li {
+    margin-bottom: 5px;
+  }
+}
+
+.remove-link {
+  display: block;
 }

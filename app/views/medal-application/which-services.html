@@ -10,7 +10,7 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      {% if data['applicationPerson'] == 'yesMyself' %}
+      {% if data['applicationPerson'] == 'Yes' %}
         <h1 class="heading-large">Which organisations did you serve with?</h1>
       {% else %}
         <h1 class="heading-large">Which organisations did the service&nbsp;person serve with?</h1>
@@ -22,17 +22,33 @@
           <fieldset class=''>
             <label class="form-label" for="military-orgs">
               <span class='visually-hidden'>List of military organisations</span>
-
             </label>
 
-
-            <!-- Arguments: 'name', 'label', 'id' -->
-            {{ forms.checkbox( 'organisations', 'Army', 'army') }}
-            {{ forms.checkbox( 'organisations', 'Home guard', 'home-guard') }}
-            {{ forms.checkbox( 'organisations', 'Royal Air force', 'raf') }}
-            {{ forms.checkbox( 'organisations', 'Royal Navy', 'navy') }}
-            {{ forms.checkbox( 'organisations', 'Royal Marines', 'marines') }}
-            {{ forms.checkbox( 'organisations', 'The reserve forces', 'reserve-forces') }}
+            {# groupName, name, label, target="" #}
+            {{ forms.checkbox( 
+              'organisations', 
+              'army',
+              'Army') }}
+            {{ forms.checkbox( 
+              'organisations', 
+              'home-guard',
+              'Home guard') }}
+            {{ forms.checkbox( 
+              'organisations', 
+              'raf',
+              'Royal Air force') }}
+            {{ forms.checkbox( 
+              'organisations', 
+              'navy',
+              'Royal Navy') }}
+            {{ forms.checkbox( 
+              'organisations', 
+              'marines',
+              'Royal Marines') }}
+            {{ forms.checkbox( 
+              'organisations', 
+              'reserve-forces',
+              'The reserve forces') }}
 
             <div class="multiple-choice">
               <input id="other-orgs" 

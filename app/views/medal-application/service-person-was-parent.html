@@ -11,8 +11,16 @@
     <div class="column-two-thirds">
 
       <h1 class="heading-large">
-        Is there a living husband, wife, civil&nbsp;partner or parent of the service&nbsp;person?
+        Are any of the following people alive?
       </h1>
+
+      <p class='before-list'>
+        The service person’s:
+      </p>
+      <ul class='list list-bullet'>
+        <li>husband, wife or civil partner</li>
+        <li>parents</li>
+      </ul>
 
       <form action="/medal-application/eldest-child" method="post" class="form">
 
@@ -20,13 +28,11 @@
           <fieldset class='inline'>
             <label class="form-label" for="partnerOrSpouse">
               <span class='visually-hidden'>Other names</span>
-
             </label>
 
-
             <!-- Arguments: 'id yes', 'id no', 'name' -->
-            {{ forms.radio_button( 'partnerOrSpouseNo', 'partnerOrSpouse', 'partnerOrSpouseNo', 'No' ) }}
-            {{ forms.radio_button( 'partnerOrSpouseYes', 'partnerOrSpouse', 'partnerOrSpouseYes', 'Yes' ) }}
+            {{ forms.radio( 'partnerOrSpouseAlive', 'partnerOrSpouseAlive', 'No' ) }}
+            {{ forms.radio( 'partnerOrSpouseAlive', 'partnerOrSpouseDead', 'Yes' ) }}
 
           </fieldset>
         </div>

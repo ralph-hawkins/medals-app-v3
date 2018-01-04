@@ -15,14 +15,9 @@ Medals application
       <form action="/medal-application/contact-preference" method="post" class="form">
 
         <div class="form-group">
-          <fieldset class='inline'>
-            <label class="form-label" for="otherName">
-              <span class=''>Full name</span>
-
-            </label>
 
             <!-- Arguments: 'id yes', 'id no', 'name' -->
-            {{ forms.textbox( ) }}
+            {{ forms.input( 'alternativeName', 'Full Name'  ) }}
 
           </fieldset>
         </div>
@@ -38,14 +33,17 @@ Medals application
                 <span class=''>Full name</span>
               </label>
 
-              {{ forms.textbox( ) }}
+              {{ forms.input( ) }}
+              <span class='add-link remove-link js-hidden' id="removeName">
+                Remove name
+              </span>
+
+              <span class='add-link-secondary' id="">
+                Add another name
+              </span>
 
             </fieldset>
           </div>
-
-          <span class='add-link js-hidden' id="removeName">
-            Remove name
-          </span>
         </div>
 
         <!-- Arguments: 'button text' -->

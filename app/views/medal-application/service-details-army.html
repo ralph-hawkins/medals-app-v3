@@ -19,17 +19,7 @@
 
       <form action="name-service" method="post" class="form">
 
-        <div class="form-group">
-
-          <fieldset class=''>
-            <label class="form-label" for="service-number">Service number</label>
-            <span class="form-hint">
-              For example, ‘RA16 989 587’.
-            </span>
-            {{ forms.textbox( 'service-number' ) }}
-          </fieldset>
-        </div>
-
+        {{ forms.input( 'armyServiceNumber', 'Service number', 'For example, ‘RA16 989 587’.' ) }}
 
         <h2 class='heading-medium'>
           Service dates
@@ -38,25 +28,13 @@
         <p>
           These dates are to help find your records, be as precise as you can.
         </p>
-
-        <div class="form-group">
-
-          <fieldset class=''>
-            <label class="form-label" for="service-start">Start date</label>
-            {{ forms.textbox_short( 'service-start' ) }}
-
-          </fieldset>
-        </div>
-
-        <div class="form-group">
-
-          <fieldset class=''>
-            <label class="form-label" for="service-end">End date</label>
-            {{ forms.textbox_short( 'service-start' ) }}
-
-          </fieldset>
-        </div>
-
+        {{ forms.input_short( 
+          'armyServiceStart',
+          'Start date',
+          'For example, ‘December 1997’, or ‘1997’.'  ) }}
+        {{ forms.input_short( 
+          'armyServiceEnd',
+          'End date'  ) }}
         <!-- Arguments: 'button text' -->
         {{ forms.save_button( 'Continue' ) }}
 

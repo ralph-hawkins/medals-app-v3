@@ -16,26 +16,17 @@
         Medal applications usually take 6 to 8 weeks to process. If you move during this time, please contact <a href='dbs-medals@mod.uk'>dbs-medals@mod.uk</a>.
       </p>
 
+      <p>
+        There is no charge for the postage. The delivery will need to be signed for.
+      </p>
+
       <form action="check-your-answers" method="post" class="form">
 
-        <div class="form-group">
-          <fieldset>
-            <label class="form-label" for="posta-laddress">
-              Full address
-            </label>
+        {{ forms.textarea( 'postal-address', 'Full address' ) }}
 
-            {{ forms.textbox_large( 'postal-address' ) }}
-
-          </fieldset>
-        </div>
-
-
-
-        <!-- Arguments: 'button text' -->
         {{ forms.save_button( 'Continue' ) }}
-
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </main>
 

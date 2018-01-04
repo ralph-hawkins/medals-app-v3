@@ -17,10 +17,10 @@ router.post('/medal-application/active-service', function (req, res) {
 
   var applicationPerson = req.body.applicationPerson
 
-  if (applicationPerson == 'relativeOfDeceased')
+  if (applicationPerson == 'No, I’m applying for the medals of a deceased relative')
     { res.redirect('/medal-application/closest-relative') }
 
-  else if (applicationPerson ==  'behalfOfRelative')
+  else if (applicationPerson ==  'No, I’m applying on behalf of someone else')
     { res.redirect('/medal-application/active-service-third-party') }
 
   else 
@@ -33,7 +33,7 @@ router.post('/medal-application/which-services', function (req, res) {
   var activeService = req.body.activeService
 
 
-  if (activeService == 'serving') {
+  if (activeService == 'No, I’m currently serving') {
     res.redirect('/medal-application/ineligible-still-serving')  }
 
   else {
@@ -46,7 +46,7 @@ router.post('/medal-application/lpa', function (req, res) {
   var active3rdParty = req.body.active3rdParty
 
 
-  if (active3rdParty == 'serving') {
+  if (active3rdParty == 'No, they’re currently serving') {
     res.redirect('/medal-application/ineligible-still-serving')  }
 
   else {
@@ -59,7 +59,7 @@ router.post('/medal-application/lpa-upload', function (req, res) {
   var lpa = req.body.lpa
 
 
-  if (lpa == 'lpaNo') {
+  if (lpa == 'No') {
     res.redirect('/medal-application/ineligible-no-lpa')  }
 
   else {
@@ -70,39 +70,44 @@ router.post('/medal-application/lpa-upload', function (req, res) {
 router.post('/medal-application/death-in-service', function (req, res) {
 
   var relationship = req.body.relationship
+  var parentType = req.body.parentType
+  var eldestChild = req.body.eldestChild
 
-  if (relationship == 'relationshipChild') {
+  if (relationship == 'Parent') {
 
     res.redirect('/medal-application/service-person-was-child')
   } 
 
-  else if (relationship == 'relationshipParent') {
+  else if (relationship == 'Child') {
 
     res.redirect('/medal-application/service-person-was-parent')
   }
 
-  else if (relationship == 'relationshipSibling') {
+  else if (relationship == 'Brother or sister') {
 
     res.redirect('/medal-application/service-person-was-sibling')
   }
 
-  else if (relationship == 'relationshipGrandParent') {
+  else if (relationship == 'Grandchild') {
 
     res.redirect('/medal-application/service-person-was-grand-parent')
   }
 
-  else if (relationship == 'relationshipAuntUncle') {
+  else if (relationship == 'Aunt or uncle') {
 
     res.redirect('/medal-application/service-person-was-aunt-uncle')
   }
 
-  else if (relationship == 'relationshipNieceNephew') {
+  else if (relationship == 'Niece or nephew') {
 
     res.redirect('/medal-application/service-person-was-niece-nephew')
   }
 
-  else {
+  else if (eldestChild == 'eldestChildYes') {
+  res.redirect('/medal-application/ineligible-not-eldest-child')
+  }
 
+  else {
     res.redirect('/medal-application/death-in-service')
   }
 })
@@ -112,8 +117,7 @@ router.post('/medal-application/evidence-of-death', function (req, res) {
 
   var diedInService = req.body.diedInService
 
-
-  if (diedInService == 'diedInServiceYes') {
+  if (diedInService == 'Yes') {
     res.redirect('/medal-application/which-services')  }
 
   else {
@@ -126,7 +130,7 @@ router.post('/medal-application/contact-preference', function (req, res) {
   var otherName = req.body.otherName
 
 
-  if (otherName == 'otherNameYes') {
+  if (otherName == 'Yes') {
     res.redirect('/medal-application/alternative-name')  }
 
   else {
@@ -150,6 +154,7 @@ router.post('/medal-application/parent', function (req, res) {
 router.post('/medal-application/death-in-service', function (req, res) {
 
   var parent = req.body.parent
+  console.log('parent:', parent)
 
   if (parent == 'parentMother') {
     res.redirect('/medal-application/living-father')  }
@@ -184,26 +189,13 @@ router.post('/medal-application/eldest-child', function (req, res) {
     res.redirect('/medal-application/eldest-child')  }
 })
 
-//Are you the service persons eldest living child?
-router.post('/medal-application/death-in-service', function (req, res) {
-
-  var eldestChild = req.body.eldestChild
-
-
-  if (eldestChild == 'eldestChildYes') {
-    res.redirect('/medal-application/ineligible-not-eldest-child')  }
-
-  else {
-    res.redirect('/medal-application/death-in-service')  }
-})
-
 //Do you have a copy of the death certificate you can provide?
 router.post('/medal-application/death-certificate-upload', function (req, res) {
 
   var deathCert = req.body.deathCert
 
 
-  if (deathCert == 'deathCertNo') {
+  if (deathCert == 'No') {
     res.redirect('/medal-application/other-evidence')  }
 
   else {

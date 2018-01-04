@@ -1,41 +1,62 @@
-{% macro textbox(id) %}
-    <input class="form-control form-control-2-3" id="{{ id }}"></textarea>
+{% macro input(name, label, hint='') %}
+    <div class="form-group">
+      <span class="form-hint">
+        {{ hint }}
+      </span>
+      <label class="form-label" for="{{ name }}">{{label}}</label>
+      <input class="form-control form-control-2-3" id="{{ name }}" name="{{ name }}">
+    </div>
 {% endmacro %}
 
-{% macro textbox_short(id) %}
-    <input class="form-control form-control-1-3" id="{{ id }}"></textarea>
+{% macro input_short(name, label, hint='') %}
+    <div class="form-group">
+      <label class="form-label" for="{{ name }}">{{label}}</label>
+      <span class="form-hint">
+        {{ hint }}
+      </span>
+      <input class="form-control form-control-1-3" id="{{ name }}" name="{{ name }}">
+    </div>
 {% endmacro %}
 
-{% macro textbox_large(id) %}
-    <textarea class="form-control form-control-2-3" id="{{ id }}" rows='5'></textarea>
+{% macro textarea(name, label, hint='') %}
+  <div class="form-group">
+      <label class="form-label" for="{{ name }}">{{label}}</label>
+      <span class="form-hint">
+        {{ hint }}
+      </span>
+      <textarea 
+        class="form-control form-control-2-3" 
+        id="{{ name }}" 
+        name="{{ name }}"  
+        rows='5'  
+        value="{{data['{{ name }}']}}" ></textarea>
+    </div>
 {% endmacro %}
 
-{% macro radio_button( id, name, value, label ) %}
-  <div class="multiple-choice">
-    <input id="{{ id }}" name="{{ name }}" type="radio" value="{{ value }}" {{ checked("{{ name }}", "{{ label }}") }}>
-    <label for="{{ id }}">{{ label }}</label>
+{% macro radio( groupName, name, label, target="" ) %}
+  <div class="multiple-choice" data-target={{target}}>
+    <input id="{{ name }}" type="radio" name="{{ groupName }}" value="{{ label }}" {{ checked(groupName, label) }}>
+    <label for="{{ name }}">{{ label | safe }}</label>
   </div>
 {% endmacro %}
 
-{% macro radio_button_with_follow_up( followup_id, id, name, label, followup_label ) %}
+{% macro conditional_child_input(name, label, target) %}
+  <div class="panel panel-border-narrow js-hidden" id="{{target}}">
+    {{input( name, label )}}
+  </div>
+{% endmacro %}
 
-      <div class="multiple-choice" data-target="{{ followup_id }}">
-        <input id="{{ id }}" type="radio" name="{{ name }}" value="{{ id }}">
-        <label for="{{ id }}">{{ label }}</label>
-      </div>
-      <div class="panel panel-border-narrow js-hidden" id="{{ followup_id }}">
-        <label class="form-label" for="{{ followup_id }}">{{ followup_label }}</label>
-        <input class="form-control" name="{{ followup_id }}" type="text" id="{{ followup_id }}">
-      </div>
-
+{% macro conditional_child_radio(groupName, name, label, target) %}
+  <div class="panel panel-border-narrow js-hidden" id="{{target}}">
+    {{radio( groupName, name, label )}}
+  </div>
 {% endmacro %}
 
 
-
-{% macro checkbox( name, label, id ) %}
-  <div class="multiple-choice">
-    <input id="{{ id }}" type="checkbox" name="{{ name }}" value="{{ label }}">
-    <label for="{{ id }}">{{ label }}</label>
+{% macro checkbox ( groupName, name, label, target="" ) %}
+  <div class="multiple-choice" data-target={{target}}>
+    <input id="{{ name }}" type="checkbox" name="{{ groupName }}" value="{{ label }}" {{ checked(groupName, label) }}>
+    <label for="{{ name }}">{{ label | safe }}</label>
   </div>
 {% endmacro %}
 

@@ -22,12 +22,13 @@
               <span class='visually-hidden'>Is the service person retired from the armed forces?</span>
             </label>
 
-            <!-- id, name, value, label -->
-            {{ forms.radio_button
-              ( 'active3rdPartyRetired', 'active3rdParty', 'retired', 'Yes') 
+            {# groupName, name, label, target="" #}
+            {{ forms.radio
+              ( 'active3rdParty', 'retired', 'Yes') 
             }}
-            {{ forms.radio_button
-              ( 'active3rdPartyServing', 'active3rdParty', 'serving', 'No, they’re currently serving') }}
+            {{ forms.radio
+              ( 'active3rdParty', 'serving', 'No, they’re currently serving', 'serving') 
+            }}
           </fieldset>
         </div>
 

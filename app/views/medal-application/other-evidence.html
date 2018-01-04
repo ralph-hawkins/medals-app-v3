@@ -15,7 +15,7 @@
       </h1>
 
       <p>
-        For example an obituary.
+        For example a copy of an obituary notice or other record.
       </p>
 
       <form action="/medal-application/other-evidence-upload" method="post" class="form">
@@ -25,8 +25,8 @@
               <span class='visually-hidden'>Other names</span>
             </label>
 
-            {{ forms.radio_button( 'otherEvidenceYes', 'otherEvidence', 'otherEvidenceYes', 'Yes' ) }}
-            {{ forms.radio_button( 'otherEvidenceNo', 'otherEvidence', 'otherEvidenceNo', 'No' ) }}
+            {{ forms.radio( 'otherEvidence', 'otherEvidenceYes', 'Yes' ) }}
+            {{ forms.radio( 'otherEvidence', 'otherEvidenceNo', 'No' ) }}
 
           </fieldset>
        </div>

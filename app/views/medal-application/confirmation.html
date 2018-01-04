@@ -22,14 +22,20 @@
       </div>
 
       <p>
-        We have sent you a confirmation email.
+        A confirmation of your application has been sent to  {{ data['contactEmail'] }}.
       </p>
 
       <h2 class="heading-medium">What happens next</h2>
+      {% if data['applicationPerson'] != 'yesMyself' %}
       <p>
         Your career records will be checked and the medals you’re eligible for will be sent to you.
       </p>
-      <p>You may be contacted for more information to help with eligiblity checks.</p>
+      {% else %}
+      <p>
+        The career records of {{data['servicePersonName']}} will be checked and the medals you’re eligible for will be sent to you.
+      </p>
+      {% endif %}
+      <p>You may be contacted for more information about your application.</p>
       <p><a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">What did you think of this service?</a> (takes 30 seconds)</p>
 
 

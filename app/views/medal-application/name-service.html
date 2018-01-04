@@ -10,7 +10,7 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      {% if data['applicationPerson'] == 'yesMyself' %}
+      {% if data['applicationPerson'] == 'Yes' %}
         <h1 class="heading-large">What is your name?</h1>
       {% else %}
         <h1 class="heading-large">What is the service&nbsp;person’s name?</h1>
@@ -18,21 +18,12 @@
 
       <form action="different-name" method="post" class="form">
 
-        <div class="form-group">
+        {{ forms.input( 'servicePersonName', 'Full name' ) }}
 
-          <fieldset class=''>
-
-            <label class="form-label" for="service-start">Full name</label>
-            {{ forms.textbox( 'service-person-name' ) }}
-
-          </fieldset>
-        </div>
-
-        <!-- Arguments: 'button text' -->
         {{ forms.save_button( 'Continue' ) }}
+      </form>
 
-      </div>
-    </form>
+    </div>
   </div>
 </main>
 

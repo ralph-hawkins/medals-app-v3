@@ -10,7 +10,7 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <h1 class="heading-large">Are you applying for medals awared to you?</h1>
+      <h1 class="heading-large">Are you applying for medals awarded to you?</h1>
 
       <form action="/medal-application/active-service" method="post" class="form">
 
@@ -20,13 +20,22 @@
               <span class='visually-hidden'>Application person</span>
             </label>
 
-            <!-- id, name, value, label -->
-            {{ forms.radio_button
-              ( 'person-self', 'applicationPerson', 'yesMyself', 'Yes') }}
-            {{ forms.radio_button
-              ( 'person-behalf-of-service', 'applicationPerson', 'behalfOfRelative', 'No, I’m applying on behalf of someone else') }}
-            {{ forms.radio_button
-              ( 'person-relative', 'applicationPerson', 'relativeOfDeceased', 'No, I’m applying for the medals of a deceased relative') }}
+            {# ( groupName, name, label, target="" ) #}
+            {{ forms.radio
+              ( 'applicationPerson',
+                'yesMyself',
+                'Yes') 
+            }}
+            {{ forms.radio
+              ( 'applicationPerson',
+                'behalfOfRelative',
+                'No, I’m applying on behalf of someone else') 
+            }}
+            {{ forms.radio
+              ( 'applicationPerson',
+                'relativeOfDeceased',
+                'No, I’m applying for the medals of a deceased relative') 
+            }}
 
           </fieldset>
         </div>

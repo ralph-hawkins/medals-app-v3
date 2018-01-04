@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Start page example
+{% endblock %}
+
+{% block proposition_header %}
+  <!-- blank to remove the proposition header -->
+{% endblock %}
+
+{% block header_class %}
+  <!-- blank to remove the proposition header -->
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+
+  <div class="breadcrumbs">
+    <ol>
+      <li><a href="https://www.gov.uk">Home</a></li>
+      <li><a href="">Section</a></li>
+      <li>Subsection</li>
+    </ol>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-xlarge">
+        {% if serviceName %} {{ serviceName }} {% endif %}
+      </h1>
+
+      <p>Use this service to apply for medals awarded:</p>
+
+      <ul class="list list-bullet">
+        <li>
+          during your military career, but you don’t have
+        </li>
+        <li>
+          to someone you have lasting power of attorney for during their military career, but they don’t have
+        </li>
+        <li>
+          to a deceased family member during their career
+        </li>
+      </ul>
+
+      <p>This service only provides medals awarded by:</p>
+
+      <ul class='list list-bullet'>
+        <li>Army</li>
+        <li>Home guard</li>
+        <li>Royal air force</li>
+        <li>Royal Navy</li>
+        <li>Royal Marines</li>
+        <li>The reserve forces</li>
+      </ul>
+
+      <p>
+        If you’re apply for medals awarded to you, you’ll need details of your service career.
+      </p>
+      <p>
+        If you’re apply using lasting power of attorney you’ll need:
+      </p>
+      <ul class="list list-bullet">
+        <li>details of the person’s military career</li>
+        <li>evidence of lasting power of attorney</li>
+      </ul>
+      <p>
+        You can only apply for the medals of a deceased realtive if you are:
+      </p>
+      <ul class='list list-bullet'>
+        <li>
+          within two generations of the service person, for example you can apply for medals for a parent or grandparent but not great-grandparent
+        </li>
+        <li>the closest living next of kin</li>
+      </ul>
+
+
+      <p>Applying takes around 5 minutes.</p>
+
+      <p>
+        <a class="button button-start" href="medal-application/applicant" role="button">Start now</a>
+      </p>
+
+      <h2 class="heading-medium">Before you start</h2>
+
+      <p>You can also <a href="#">apply by post.</a></p>
+
+    </div>
+    <div class="column-third">
+
+      <aside class="govuk-related-items" role="complementary">
+        <h2 class="heading-medium" id="subsection-title">Subsection</h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="font-xsmall">
+            <li><a href="#">Related link</a></li>
+            <li><a href="#">Related link</a></li>
+            <li><a href="#" class="bold-xsmall">More <span class="visuallyhidden">in Subsection</span></a></li>
+          </ul>
+        </nav>
+      </aside>
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

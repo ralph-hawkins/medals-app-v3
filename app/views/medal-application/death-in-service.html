@@ -21,17 +21,14 @@
               <span class='visually-hidden'>Other names</span>
             </label>
 
-
-            <!-- Arguments: 'id yes', 'id no', 'name' -->
-            {{ forms.radio_button( 'diedInServiceYes', 'diedInService', 'diedInServiceYes', 'Yes' ) }}
-            {{ forms.radio_button( 'diedInServiceNo', 'diedInService', 'diedInServiceNo', 'No' ) }}
+            {# ( groupName, name, label, target="" ) #}
+            {{ forms.radio( 'diedInService', 'diedInServiceYes', 'Yes' ) }}
+            {{ forms.radio( 'diedInService', 'diedInServiceNo', 'No' ) }}
 
           </fieldset>
         </div>
 
-
-
-        <!-- Arguments: 'button text' -->
+        {# buttonText #}
         {{ forms.save_button( 'Continue' ) }}
 
       </div>

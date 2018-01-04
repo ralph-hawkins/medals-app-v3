@@ -22,15 +22,14 @@
 
         <div class="form-group" data-required="Custom error message goes here">
           <fieldset class='inline'>
+
             <label class="form-label" for="eldestChild">
               <span class='visually-hidden'>Other names</span>
-
             </label>
 
-
             <!-- Arguments: 'id yes', 'id no', 'name' -->
-            {{ forms.radio_button( 'eldestChildYes', 'eldestChild', 'eldestChildYes', 'Yes' ) }}
-            {{ forms.radio_button( 'eldestChildNo', 'eldestChild', 'eldestChildNo', 'No' ) }}
+            {{ forms.radio( 'eldestChild', 'eldestChildYes', 'Yes' ) }}
+            {{ forms.radio( 'eldestChild', 'eldestChildNo', 'No' ) }}
           </fieldset>
         </div>
 

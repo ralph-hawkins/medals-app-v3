@@ -21,9 +21,44 @@
 
             </label>
 
-            {{ forms.radio_button_with_follow_up( 'email-address', 'email', 'contact-preference', 'Email', 'Email address' ) }}
-            {{ forms.radio_button_with_follow_up( 'phone-number', 'phone', 'contact-preference', 'Phone', 'Phone number' ) }}
-            {{ forms.radio_button_with_follow_up( 'text-message', 'textmessage', 'contact-preference', 'Text message', 'Phone number' ) }}
+
+            {# groupName, name, label, target="" #}
+            {{ forms.radio
+              ( 'contactPreference',
+                'emailAddress',
+                'Email',
+                'contactPreferenceEmail' ) 
+            }}
+            {{ forms.conditional_child_input
+              ( 'contactPreference',
+                'Email address',
+                'contactPreferenceEmail'
+                )
+            }}
+            {{ forms.radio
+              ( 'contactPreference',
+                'phoneNumber',
+                'Phone',
+                'contactPreferencePhone' ) 
+            }}
+            {{ forms.conditional_child_input
+              ( 'contactPreference',
+                'Phone Number',
+                'contactPreferencePhone'
+                )
+            }}
+            {{ forms.radio
+              ( 'contactPreference',
+                'textMessage',
+                'Text message',
+                'contactPreferenceText' ) 
+            }}
+            {{ forms.conditional_child_input
+              ( 'contactPreference',
+                'Phone Number',
+                'contactPreferenceText'
+                )
+            }}
 
           </fieldset>
         </div>

@@ -17,24 +17,23 @@
       <form action="lpa-upload" method="post" class="form">
 
         <div class="form-group" data-required="Custom error message goes here">
-          <fieldset class='inline'>
+          <fieldset class=''>
             <label class="form-label" for="lpa">
               <span class='visually-hidden'>
                 Do you have lasting power of attorney for the service&nbsp;person?
               </span>
             </label>
 
-            <!-- id, name, value, label -->
-            {{ forms.radio_button
-              ( 'lpaYes', 'lpa', 'lpaYes', 'Yes') 
+            {# ( groupName, name, label, target="" ) #}
+            {{ forms.radio
+              ( 'lpa', 'lpaYes', 'Yes') 
             }}
-            {{ forms.radio_button
-              ( 'lpaNo', 'lpa', 'lpaNo', 'No') 
+            {{ forms.radio
+              ( 'lpa','lpaNo', 'No') 
             }}
           </fieldset>
         </div>
 
-        <!-- 'button text' -->
         {{ forms.save_button( 'Continue' ) }}
 
       </div>

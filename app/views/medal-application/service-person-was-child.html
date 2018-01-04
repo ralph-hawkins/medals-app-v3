@@ -21,10 +21,9 @@
 
             </label>
 
-
-            <!-- Arguments: 'id yes', 'id no', 'name' -->
-            {{ forms.radio_button( 'partnerNo', 'partner', 'partnerNo', 'No' ) }}
-            {{ forms.radio_button( 'partnerYes', 'partner', 'partnerYes', 'Yes' ) }}
+            {# groupName, name, label, target="" #}
+            {{ forms.radio( 'partner', 'partnerNo', 'No' ) }}
+            {{ forms.radio( 'partner', 'partnerYes', 'Yes' ) }}
 
           </fieldset>
         </div>
