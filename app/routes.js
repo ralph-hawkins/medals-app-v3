@@ -58,7 +58,6 @@ router.post('/medal-application/lpa-upload', function (req, res) {
 
   var lpa = req.body.lpa
 
-
   if (lpa == 'No') {
     res.redirect('/medal-application/ineligible-no-lpa')  }
 
@@ -71,12 +70,23 @@ router.post('/medal-application/death-in-service', function (req, res) {
 
   var relationship = req.body.relationship
   var parentType = req.body.parentType
-  var eldestChild = req.body.eldestChild
+  var livingFather = req.body.livingFather
+  var partner = req.body.partner
 
-  if (relationship == 'Parent') {
+  if (partner == 'partnerYes') {
+    res.redirect('/medal-application/ineligible-living-spouse')
+  }
 
+  else if (livingFather == 'Yes') {
+    res.redirect('/medal-application/ineligible-living-father')  }
+
+  else if (parentType == 'Father') {
     res.redirect('/medal-application/service-person-was-child')
-  } 
+  }
+
+  else if (parentType == 'Mother') {
+    res.redirect('/medal-application/living-father')
+  }
 
   else if (relationship == 'Child') {
 
@@ -101,10 +111,6 @@ router.post('/medal-application/death-in-service', function (req, res) {
   else if (relationship == 'Niece or nephew') {
 
     res.redirect('/medal-application/service-person-was-niece-nephew')
-  }
-
-  else if (eldestChild == 'eldestChildYes') {
-  res.redirect('/medal-application/ineligible-not-eldest-child')
   }
 
   else {
@@ -137,44 +143,6 @@ router.post('/medal-application/contact-preference', function (req, res) {
     res.redirect('/medal-application/contact-preference')  }
 })
 
-//Is there a living husband, wife or civil partner?
-router.post('/medal-application/parent', function (req, res) {
-
-  var partner = req.body.partner
-
-
-  if (partner == 'partnerYes') {
-    res.redirect('/medal-application/ineligible-living-spouse')  }
-
-  else {
-    res.redirect('/medal-application/parent')  }
-})
-
-//Are you the service persons Mother or Father?
-router.post('/medal-application/death-in-service', function (req, res) {
-
-  var parent = req.body.parent
-  console.log('parent:', parent)
-
-  if (parent == 'parentMother') {
-    res.redirect('/medal-application/living-father')  }
-
-  else {
-    res.redirect('/medal-application/death-in-service')  }
-})
-
-//Is the service persons Father alive?
-router.post('/medal-application/death-in-service', function (req, res) {
-
-  var livingFather = req.body.livingFather
-
-
-  if (livingFather == 'livingFatherYes') {
-    res.redirect('/medal-application/ineligible-living-father')  }
-
-  else {
-    res.redirect('/medal-application/death-in-service')  }
-})
 
 //Is there a living husband, wife or civil partner?
 router.post('/medal-application/eldest-child', function (req, res) {

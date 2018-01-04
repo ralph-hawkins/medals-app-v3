@@ -10,7 +10,7 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <h1 class="heading-large">Is the service person’s Father alive?</h1>
+      <h1 class="heading-large">Is the service person’s father alive?</h1>
 
       <form action="/medal-application/death-in-service" method="post" class="form">
 
@@ -18,11 +18,11 @@
           <fieldset class=''>
 
             <label class="form-label" for="livingFather">
-              <span class='visually-hidden'>Is there a living Father?</span>
+              <span class='visually-hidden'>Is the service person’s father alive?</span>
             </label>
 
-            {{ forms.radio_button( 'livingFatherYes', 'livingFather', 'livingFatherYes', 'Yes' ) }}
-            {{ forms.radio_button( 'livingFatherNo', 'livingFather', 'livingFatherNo', 'No' ) }}
+            {{ forms.radio( 'livingFather', 'livingFatherYes', 'Yes' ) }}
+            {{ forms.radio( 'livingFather', 'livingFatherNo', 'No' ) }}
 
           </fieldset>
         </div>
