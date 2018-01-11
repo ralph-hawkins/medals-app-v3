@@ -11,14 +11,14 @@
     <div class="column-two-thirds">
 
       {% if data['applicationPerson'] == 'Yes' %}
-        <h1 class="heading-large">What is your name?</h1>
+        <h1 class="heading-large">Your full name</h1>
       {% else %}
-        <h1 class="heading-large">What is the service&nbsp;person’s name?</h1>
+        <h1 class="heading-large">What is the serviceperson’s full name?</h1>
       {% endif %}
 
       <form action="different-name" method="post" class="form">
 
-        {{ forms.input( 'servicePersonName', 'Full name' ) }}
+        {{ forms.input( 'servicePersonName', '' ) }}
 
         {{ forms.save_button( 'Continue' ) }}
       </form>

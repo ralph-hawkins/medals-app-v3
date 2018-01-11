@@ -12,12 +12,15 @@
 
       {% if data['applicationPerson'] == 'Yes' %}
         <h1 class="heading-large">Have you ever been known by any other names?</h1>
+        <p>
+          For example, your maiden name.
+        </p>
       {% else %}
         <h1 class="heading-large">Has the service&nbsp;person ever been known by any other names?</h1>
+        <p>
+          For example, their maiden name.
+        </p>
       {% endif %}
-      <p>
-        For example, maiden name.
-      </p>
 
       <form action="/medal-application/contact-preference" method="post" class="form">
 
