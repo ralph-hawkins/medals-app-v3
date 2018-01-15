@@ -13,7 +13,7 @@
       {% if data['applicationPerson'] == 'Yes' %}
         <h1 class="heading-large">Which organisations did you serve with?</h1>
       {% else %}
-        <h1 class="heading-large">Which organisations did the service&nbsp;person serve with?</h1>
+        <h1 class="heading-large">Which organisations did the serviceperson serve with?</h1>
       {% endif %}
 
       <form action="service-details-army" method="post" class="form">
@@ -32,11 +32,11 @@
             {{ forms.checkbox( 
               'organisations', 
               'home-guard',
-              'Home guard') }}
+              'Home Guard') }}
             {{ forms.checkbox( 
               'organisations', 
               'raf',
-              'Royal Air force') }}
+              'Royal Air Force') }}
             {{ forms.checkbox( 
               'organisations', 
               'navy',
@@ -48,7 +48,7 @@
             {{ forms.checkbox( 
               'organisations', 
               'reserve-forces',
-              'The reserve forces') }}
+              'Reserve forces') }}
 
             <div class="multiple-choice">
               <input id="other-orgs" 
@@ -60,7 +60,7 @@
                 Other organisations
                 <br>
                 <span class='label-explanation'>
-                  For example Civil defense service, Royal Fleet Auxillary or Merchant Navy
+                  For example, the Civil Defense Service, Royal Fleet Auxiliary or Merchant Navy
                 </span>
               </label>
             </div>
