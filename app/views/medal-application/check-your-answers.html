@@ -86,8 +86,176 @@ Medals application
         <thead>
           <tr>
             <th colspan="2">
-              {% if data['applicationPerson'] == 'Yes' %}
               <h2 class="heading-medium">Your details</h2>
+            </th>
+            <th>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              Name
+            </td>
+            <td>
+              {{ data['servicePersonName'] }}
+            </td>
+            <td class="change-answer">
+              <a href="/docs/examples/pass-data/vehicle-registration">
+                Change <span class="visuallyhidden">registration number</span>
+              </a>
+            </td>
+          </tr>
+          {% if data['otherName'] == 'Yes' %}
+          <tr>
+            <td>
+              Other names held
+            </td>
+            <td>
+              {{ data['alternativeName'] }}
+            </td>
+            <td class="change-answer">
+              <a href="/docs/examples/pass-data/vehicle-registration">
+                Change <span class="visuallyhidden">registration number</span>
+              </a>
+            </td>
+          </tr>
+          {% endif %}
+          <tr>
+            <td>
+              {% if data['contactPreferenceEmail'] %}
+                Email address
+              {% else %}
+                Phone number
+              {% endif %}
+            </td>
+            <td>
+              {{ data['contactPreferenceEmail'] }}
+              {{ data['contactPreferencePhone'] }}
+              {{ data['contactPreferenceText'] }}
+            </td>
+            <td class="change-answer">
+              <a href="/docs/examples/pass-data/vehicle-registration">
+                Change <span class="visuallyhidden">registration number</span>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Address
+            </td>
+            <td>
+              {{ data['postal-address'] }}
+            </td>
+            <td class="change-answer">
+              <a href="/docs/examples/pass-data/vehicle-registration">
+                Change <span class="visuallyhidden">registration number</span>
+              </a>
+            </td>            
+          </tr>
+        </tbody>
+      </table>
+      {% else %}
+      <table class="check-your-answers">
+        <thead>
+          <tr>
+            <th colspan="2">
+              <h2 class="heading-medium">
+                Service person’s details
+              </h2>
+            </th>
+            <th>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              Service person’s name
+            </td>
+            <td>
+              {{ data['servicePersonName'] }}
+            </td>
+            <td class="change-answer">
+              <a href="/docs/examples/pass-data/vehicle-registration">
+                Change <span class="visuallyhidden">registration number</span>
+              </a>
+            </td>
+          </tr>
+          {% if data['otherName'] == 'Yes' %}
+          <tr>
+            <td>
+              Other names held
+            </td>
+            <td>
+              {{ data['alternativeName'] }}
+            </td>
+            <td class="change-answer">
+              <a href="/docs/examples/pass-data/vehicle-registration">
+                Change <span class="visuallyhidden">registration number</span>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Organisation served in
+            </td>
+            <td>
+              {% if data['armyServiceNumber'] %}
+              Army
+              {% endif %}
+            </td>
+            <td class="change-answer">
+              <a href="/docs/examples/pass-data/vehicle-registration">
+                Change <span class="visuallyhidden">registration number</span>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Service number
+            </td>
+            <td>
+              {{ data['armyServiceNumber'] }}
+            </td>
+            <td class="change-answer">
+              <a href="/docs/examples/pass-data/vehicle-registration">
+                Change <span class="visuallyhidden">registration number</span>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Service dates
+            </td>
+            <td>
+              <ul class='table-list'>
+                <li>
+                  {{ data['armyServiceStart'] }}
+                </li>
+                <li>
+                  to {{ data['armyServiceEnd'] }}
+                </li>
+              </ul>
+            </td>
+            <td class="change-answer">
+              <a href="/docs/examples/pass-data/vehicle-registration">
+                Change <span class="visuallyhidden">registration number</span>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="check-your-answers">
+
+        <thead>
+          <tr>
+            <th colspan="2">
+              {% if data['applicationPerson'] == 'Yes' %}
+              <h2 class="heading-medium">Service person’s details</h2>
               {% else %}
               <h2 class="heading-medium">Service&nbsp;person’s details</h2>
               {% endif %}
