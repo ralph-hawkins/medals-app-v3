@@ -38,6 +38,7 @@ $path: "/public/images/";
 
 .label-explanation {
   @include core-16;
+  display: block;
 }
 
 .question-lead {
@@ -83,4 +84,16 @@ $path: "/public/images/";
 
 .remove-link {
   display: block;
+}
+
+.item-child {
+  margin-left: 20px;
+}
+
+.list-lede {
+  margin-bottom: 0px;
+}
+
+.padding-bottom-small {
+  padding-bottom: 10px;
 }

@@ -10,14 +10,21 @@ Medals application
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <h1 class="heading-large">Other names held during service</h1>
+      {% if data['applicationPerson'] == 'Yes' %}
+        <h1 class="heading-large">Other names you held during service</h1>
+      {% else %}
+        <h1 class="heading-large">Other names the serviceperson was known by</h1>
+      {% endif %}
 
-      <form action="/medal-application/contact-preference" method="post" class="form">
-
+      {% if data['applicationPerson'] == 'Yes' %}
+        <form action="/medal-application/contact-preference" method="post" class="form">
+      {% else %}
+        <form action="/medal-application/applicant-name" method="post" class="form">
+      {% endif %}
         <div class="form-group">
 
             <!-- Arguments: 'id yes', 'id no', 'name' -->
-            {{ forms.input( 'alternativeName', 'Full Name'  ) }}
+            {{ forms.input( 'alternativeName', 'Full name'  ) }}
 
           </fieldset>
         </div>

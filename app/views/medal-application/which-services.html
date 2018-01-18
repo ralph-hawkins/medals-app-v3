@@ -16,7 +16,7 @@
         <h1 class="heading-large">Which organisations did the serviceperson serve with?</h1>
       {% endif %}
 
-      <form action="service-details-army" method="post" class="form">
+      <form action="name-service" method="post" class="form">
 
         <div class="form-group" data-required="Custom error message goes here">
           <fieldset class=''>
@@ -28,42 +28,130 @@
             {{ forms.checkbox( 
               'organisations', 
               'army',
-              'Army') }}
+              'Army',
+              'armyDetails') }}
+
+            <div class="panel panel-border-narrow js-hidden" id="armyDetails">
+            {{ forms.input ( 
+              'armyNumber',
+              'Service Number',
+              'For example, ‘RA16 989 587’') }}
+            {{ forms.input_short ( 
+              'armyStart',
+              'Start date',
+              'For example, ‘December 1997’, or ‘1997’.'  ) }}
+            {{ forms.input_short ( 
+              'armyEnd',
+              'End date') }}
+            </div>
+
             {{ forms.checkbox( 
               'organisations', 
-              'home-guard',
-              'Home Guard') }}
+              'homeGuard',
+              'Home Guard',
+              'homeGuardDetails') }}
+
+            <div class="panel panel-border-narrow js-hidden" id="homeGuardDetails">
+            {{ forms.input ( 
+              'homeGuardNumber',
+              'Service Number',
+              'For example, ‘RA16 989 587’') }}
+            {{ forms.input_short ( 
+              'homeGuardStart',
+              'Start date',
+              'For example, ‘December 1997’, or ‘1997’.'  ) }}
+            {{ forms.input_short ( 
+              'homeGuardEnd',
+              'End date') }}
+            </div>
+
             {{ forms.checkbox( 
               'organisations', 
               'raf',
-              'Royal Air Force') }}
+              'Royal Air Force',
+              'rafDetails') }}
+
+            <div class="panel panel-border-narrow js-hidden" id="rafDetails">
+            {{ forms.input ( 
+              'rafNumber',
+              'Service Number',
+              'For example, ‘RA16 989 587’') }}
+            {{ forms.input_short ( 
+              'rafStart',
+              'Start date',
+              'For example, ‘December 1997’, or ‘1997’.'  ) }}
+            {{ forms.input_short ( 
+              'rafEnd',
+              'End date') }}
+            </div>
+
             {{ forms.checkbox( 
               'organisations', 
               'navy',
-              'Royal Navy') }}
+              'Royal Navy',
+              'royalNavyDetails') }}
+
+            <div class="panel panel-border-narrow js-hidden" id="royalNavyDetails">
+            {{ forms.input ( 
+              'royalNavyNumber',
+              'Service Number',
+              'For example, ‘RA16 989 587’') }}
+            {{ forms.input_short ( 
+              'royalNavyStart',
+              'Start date',
+              'For example, ‘December 1997’, or ‘1997’.'  ) }}
+            {{ forms.input_short ( 
+              'royalNavyEnd',
+              'End date') }}
+            </div>
+
             {{ forms.checkbox( 
               'organisations', 
               'marines',
-              'Royal Marines') }}
+              'Royal Marines',
+              'royalMarinesDetails') }}
+
+            <div class="panel panel-border-narrow js-hidden" id="royalMarinesDetails">
+            {{ forms.input ( 
+              'royalMarinesNumber',
+              'Service Number',
+              'For example, ‘RA16 989 587’') }}
+            {{ forms.input_short ( 
+              'royalMarinesStart',
+              'Start date',
+              'For example, ‘December 1997’, or ‘1997’.'  ) }}
+            {{ forms.input_short ( 
+              'royalMarinesEnd',
+              'End date') }}
+            </div>
+
             {{ forms.checkbox( 
               'organisations', 
               'reserve-forces',
-              'Reserve forces') }}
+              'Reserve forces',
+              'reserveForcesDetails') }}
 
-            <div class="multiple-choice">
-              <input id="other-orgs" 
-                     type="checkbox" 
-                     name="organisations"
-                     value="Other organisations"
-              >
-              <label for="other-orgs">
-                Other organisations
-                <br>
-                <span class='label-explanation'>
-                  For example, the Civil Defense Service, Royal Fleet Auxiliary or Merchant Navy
-                </span>
-              </label>
+            <div class="panel panel-border-narrow js-hidden" id="reserveForcesDetails">
+            {{ forms.input ( 
+              'reserveForcesNumber',
+              'Service Number',
+              'For example, ‘RA16 989 587’') }}
+            {{ forms.input_short ( 
+              'reserveForcesStart',
+              'Start date',
+              'For example, ‘December 1997’, or ‘1997’.'  ) }}
+            {{ forms.input_short ( 
+              'reserveForcesEnd',
+              'End date') }}
             </div>
+
+
+            {{ forms.checkbox_with_details( 
+              'organisations', 
+              'other-organisations',
+              'Other organisations',
+              'For example, the Civil Defense Service, Royal Fleet Auxiliary or Merchant Navy') }}
+
 
 
             {% if data['applicationPerson'] == 'relativeOfDeceased' %}
@@ -71,7 +159,6 @@
             <p class='or'>
               Or
             </p>
-
 
             <div class="multiple-choice">
               <input id="other-orgs" 

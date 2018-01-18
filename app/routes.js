@@ -40,6 +40,21 @@ router.post('/medal-application/which-services', function (req, res) {
     res.redirect('/medal-application/which-services')  }
 })
 
+
+//Which organisations did you serve with?
+router.post('/medal-application/name-service', function (req, res) {
+
+  var organisations = req.body.organisations
+
+
+  if (organisations == 'Other organisations') {
+    res.redirect('/medal-application/other-orgs')  }
+
+  else {
+    res.redirect('/medal-application/name-service')  }
+})
+
+
 //Is the service person retired from the armed forces?
 router.post('/medal-application/lpa', function (req, res) {
 
@@ -66,57 +81,50 @@ router.post('/medal-application/lpa-upload', function (req, res) {
 })
 
 //How were you related to the service person?
+router.post('/medal-application/closest-living-relative', function (req, res) {
+
+  var nextOfKin = req.body.nextOfKin
+  var eldestChild = req.body.eldestChild
+  var eldestBrotherOrSister = req.body.eldestBrotherOrSister
+  var eldestHalfBrotherOrSister = req.body.eldestHalfBrotherOrSister
+  var eldestGrandchild = req.body.eldestGrandchild
+  var eldestNephewOrNiece = req.body.eldestNephewOrNiece
+  var eldestHalfNephewOrNiece = req.bdesteldestHalfNephewOrNiece
+
+  if (nextOfKin == 'Husband, wife or civil partner') {
+    res.redirect('/medal-application/death-in-service')
+  }
+
+  else if (
+    (nextOfKin == 'Child' && eldestChild == 'No') || 
+    (nextOfKin == 'Brother or sister' && eldestBrotherOrSister == 'No') || 
+    (nextOfKin == 'Half brother or sister' && eldestHalfBrotherOrSister == 'No') || 
+    (nextOfKin == 'Grandchild' && eldestGrandchild == 'No') || 
+    (nextOfKin == 'Nephew or niece' && eldestNephewOrNiece == 'No') || 
+    (nextOfKin == 'Half nephew or niece' && eldestHalfNephewOrNiece == 'No' )
+    ) {
+    res.redirect('/medal-application/ineligible-not-eldest')
+  }
+
+  else {
+    res.redirect('/medal-application/closest-living-relative')
+  }
+
+})
+
+//Is the serviceperson’s husband, wife or civil parnter alive?
 router.post('/medal-application/death-in-service', function (req, res) {
+  var closestLivingRelative = req.body.closestLivingRelative
 
-  var relationship = req.body.relationship
-  var parentType = req.body.parentType
-  var livingFather = req.body.livingFather
-  var partner = req.body.partner
-
-  if (partner == 'partnerYes') {
-    res.redirect('/medal-application/ineligible-living-spouse')
-  }
-
-  else if (livingFather == 'Yes') {
-    res.redirect('/medal-application/ineligible-living-father')  }
-
-  else if (parentType == 'Father') {
-    res.redirect('/medal-application/service-person-was-child')
-  }
-
-  else if (parentType == 'Mother') {
-    res.redirect('/medal-application/living-father')
-  }
-
-  else if (relationship == 'Child') {
-
-    res.redirect('/medal-application/service-person-was-parent')
-  }
-
-  else if (relationship == 'Brother or sister') {
-
-    res.redirect('/medal-application/service-person-was-sibling')
-  }
-
-  else if (relationship == 'Grandchild') {
-
-    res.redirect('/medal-application/service-person-was-grand-parent')
-  }
-
-  else if (relationship == 'Aunt or uncle') {
-
-    res.redirect('/medal-application/service-person-was-aunt-uncle')
-  }
-
-  else if (relationship == 'Niece or nephew') {
-
-    res.redirect('/medal-application/service-person-was-niece-nephew')
+  if (closestLivingRelative == 'Yes' ) {
+    res.redirect('/medal-application/ineligible-not-next-of-kin')
   }
 
   else {
     res.redirect('/medal-application/death-in-service')
   }
 })
+
 
 //Did the service person die in service?
 router.post('/medal-application/evidence-of-death', function (req, res) {
@@ -141,6 +149,18 @@ router.post('/medal-application/contact-preference', function (req, res) {
 
   else {
     res.redirect('/medal-application/contact-preference')  }
+})
+
+router.post('/medal-application/applicant-name', function (req, res) {
+
+  var otherName = req.body.otherName
+
+
+  if (otherName == 'Yes') {
+    res.redirect('/medal-application/alternative-name')  }
+
+  else {
+    res.redirect('/medal-application/applicant-name')  }
 })
 
 
@@ -175,7 +195,7 @@ router.post('/medal-application/other-evidence-upload', function (req, res) {
 
   var otherEvidence = req.body.otherEvidence
 
-  if (otherEvidence == 'otherEvidenceNo') {
+  if (otherEvidence == 'No, I  don’t have any proof') {
     res.redirect('/medal-application/ineligible-no-evidence')  }
 
   else {

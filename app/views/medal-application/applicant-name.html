@@ -10,24 +10,27 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <h1 class="heading-large">Are you the service person’s mother or father?</h1>
+      <h1 class="heading-large">What’s your name?</h1>
 
-      <form action="/medal-application/death-in-service" method="post" class="form">
+      <form action="/medal-application/contact-preference" method="post" class="form">
 
         <div class="form-group" data-required="Custom error message goes here">
           <fieldset class=''>
-
-            <label class="form-label" for="parent">
-              <span class='visually-hidden'>Are you the service person’s mother or father?</span>
+            <label class="form-label" for="applicationPerson">
+              <span class='visually-hidden'>Application person</span>
             </label>
 
-            {# groupName, name, label, target="" #}
-            {{ forms.radio( 'parent', 'parentMother', 'Mother' ) }}
-            {{ forms.radio( 'parent', 'parentFather', 'Father' ) }}
+            {# ( groupName, name, label, target="" ) #}
+            {{ forms.input
+              ( 'applicantName',
+                'Full name'
+              ) 
+            }}
 
           </fieldset>
         </div>
 
+        <!-- 'button text' -->
         {{ forms.save_button( 'Continue' ) }}
 
       </div>

@@ -22,8 +22,12 @@
         </p>
       {% endif %}
 
-      <form action="/medal-application/contact-preference" method="post" class="form">
-
+      {% if data['applicationPerson'] == 'Yes' %}
+        <form action="/medal-application/contact-preference" method="post" class="form">
+      {% else %}
+        <form action="/medal-application/applicant-name" method="post" class="form">
+      {% endif %}
+      
         <div class="form-group" data-required="Custom error message goes here">
           <fieldset class=''>
 

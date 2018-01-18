@@ -15,320 +15,341 @@ Medals application
         Check your answers before sending your application
       </h1>
 
-      {% if data['applicationPerson'] == 'Yes' %}
-      <table class="check-your-answers">
-        <thead>
-          <tr>
-            <th colspan="2">
-              <h2 class="heading-medium">
-                Service details
-              </h2>
-            </th>
-            <th>
-            </th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>
-              Organisation
-            </td>
-            <td>
-              {% if data['armyServiceNumber'] %}
-              Army
+        <table class="check-your-answers">
+          <thead>
+            <tr>
+              <td colspan='2'>
+                {% if data['applicationPerson'] == 'Yes' %}
+                  <h2 class="heading-medium">Service details</h2>
+                {% else %}
+                  <h2 class="heading-medium">Serviceperson’s details</h2>
+                {% endif %}
+              </td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            {% if data['applicationPerson'] != 'Yes' %}
+            <tr>
+              <td>Service person’s name</td>
+              <td>
+                {{ data['servicePersonName'] }}
+              </td>
+              <td class="change-answer">
+                <a href="/medal-application/which-services">
+                  Change
+                </a>
+              </td>
+            </tr>
+              {% if data['alternativeName'] %}
+              <tr>
+                <td>Other names held</td>
+                <td>
+                  {{ data['alternativeName']}}
+                </td>
+                <td class="change-answer">
+                  <a href="/medal-application/which-services">
+                    Change
+                  </a>
+                </td>
+              </tr>
               {% endif %}
-            </td>
-            <td class="change-answer">
-              <a href="/docs/examples/pass-data/vehicle-registration">
-                Change <span class="visuallyhidden">registration number</span>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Service number
-            </td>
-            <td>
-              {{ data['armyServiceNumber'] }}
-            </td>
-            <td class="change-answer">
-              <a href="/docs/examples/pass-data/vehicle-registration">
-                Change <span class="visuallyhidden">registration number</span>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Service dates
-            </td>
-            <td>
-              <ul class='table-list'>
-                <li>
-                  {{ data['armyServiceStart'] }}
-                </li>
-                <li>
-                  to {{ data['armyServiceEnd'] }}
-                </li>
-              </ul>
-            </td>
-            <td class="change-answer">
-              <a href="/docs/examples/pass-data/vehicle-registration">
-                Change <span class="visuallyhidden">registration number</span>
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <table class="check-your-answers">
-
-        <thead>
-          <tr>
-            <th colspan="2">
-              <h2 class="heading-medium">Your details</h2>
-            </th>
-            <th>
-            </th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>
-              Name
-            </td>
-            <td>
-              {{ data['servicePersonName'] }}
-            </td>
-            <td class="change-answer">
-              <a href="/docs/examples/pass-data/vehicle-registration">
-                Change <span class="visuallyhidden">registration number</span>
-              </a>
-            </td>
-          </tr>
-          {% if data['otherName'] == 'Yes' %}
-          <tr>
-            <td>
-              Other names held
-            </td>
-            <td>
-              {{ data['alternativeName'] }}
-            </td>
-            <td class="change-answer">
-              <a href="/docs/examples/pass-data/vehicle-registration">
-                Change <span class="visuallyhidden">registration number</span>
-              </a>
-            </td>
-          </tr>
-          {% endif %}
-          <tr>
-            <td>
-              {% if data['contactPreferenceEmail'] %}
-                Email address
-              {% else %}
-                Phone number
-              {% endif %}
-            </td>
-            <td>
-              {{ data['contactPreferenceEmail'] }}
-              {{ data['contactPreferencePhone'] }}
-              {{ data['contactPreferenceText'] }}
-            </td>
-            <td class="change-answer">
-              <a href="/docs/examples/pass-data/vehicle-registration">
-                Change <span class="visuallyhidden">registration number</span>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Address
-            </td>
-            <td>
-              {{ data['postal-address'] }}
-            </td>
-            <td class="change-answer">
-              <a href="/docs/examples/pass-data/vehicle-registration">
-                Change <span class="visuallyhidden">registration number</span>
-              </a>
-            </td>            
-          </tr>
-        </tbody>
-      </table>
-      {% else %}
-      <table class="check-your-answers">
-        <thead>
-          <tr>
-            <th colspan="2">
-              <h2 class="heading-medium">
-                Service person’s details
-              </h2>
-            </th>
-            <th>
-            </th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>
-              Service person’s name
-            </td>
-            <td>
-              {{ data['servicePersonName'] }}
-            </td>
-            <td class="change-answer">
-              <a href="/docs/examples/pass-data/vehicle-registration">
-                Change <span class="visuallyhidden">registration number</span>
-              </a>
-            </td>
-          </tr>
-          {% if data['otherName'] == 'Yes' %}
-          <tr>
-            <td>
-              Other names held
-            </td>
-            <td>
-              {{ data['alternativeName'] }}
-            </td>
-            <td class="change-answer">
-              <a href="/docs/examples/pass-data/vehicle-registration">
-                Change <span class="visuallyhidden">registration number</span>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Organisation served in
-            </td>
-            <td>
-              {% if data['armyServiceNumber'] %}
-              Army
-              {% endif %}
-            </td>
-            <td class="change-answer">
-              <a href="/docs/examples/pass-data/vehicle-registration">
-                Change <span class="visuallyhidden">registration number</span>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Service number
-            </td>
-            <td>
-              {{ data['armyServiceNumber'] }}
-            </td>
-            <td class="change-answer">
-              <a href="/docs/examples/pass-data/vehicle-registration">
-                Change <span class="visuallyhidden">registration number</span>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Service dates
-            </td>
-            <td>
-              <ul class='table-list'>
-                <li>
-                  {{ data['armyServiceStart'] }}
-                </li>
-                <li>
-                  to {{ data['armyServiceEnd'] }}
-                </li>
-              </ul>
-            </td>
-            <td class="change-answer">
-              <a href="/docs/examples/pass-data/vehicle-registration">
-                Change <span class="visuallyhidden">registration number</span>
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <table class="check-your-answers">
-
-        <thead>
-          <tr>
-            <th colspan="2">
-              {% if data['applicationPerson'] == 'Yes' %}
-              <h2 class="heading-medium">Service person’s details</h2>
-              {% else %}
-              <h2 class="heading-medium">Service&nbsp;person’s details</h2>
-              {% endif %}
-            </th>
-            <th>
-            </th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>
-              Name
-            </td>
-            <td>
-              {{ data['servicePersonName'] }}
-            </td>
-            <td class="change-answer">
-              <a href="/docs/examples/pass-data/vehicle-registration">
-                Change <span class="visuallyhidden">registration number</span>
-              </a>
-            </td>
-          </tr>
-          {% if data['otherName'] == 'Yes' %}
-          <tr>
-            <td>
-              Other names held
-            </td>
-            <td>
-              {{ data['alternativeName'] }}
-            </td>
-            <td class="change-answer">
-              <a href="/docs/examples/pass-data/vehicle-registration">
-                Change <span class="visuallyhidden">registration number</span>
-              </a>
-            </td>
-          </tr>
-          {% endif %}
-          <tr>
-            <td>
-              {% if data['contactPreferenceEmail'] %}
-                Email address
-              {% else %}
-                Phone number
-              {% endif %}
-            </td>
-            <td>
-              {{ data['contactPreferenceEmail'] }}
-              {{ data['contactPreferencePhone'] }}
-              {{ data['contactPreferenceText'] }}
-            </td>
-            <td class="change-answer">
-              <a href="/docs/examples/pass-data/vehicle-registration">
-                Change <span class="visuallyhidden">registration number</span>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Address
-            </td>
-            <td>
-              {{ data['postal-address'] }}
-            </td>
-            <td class="change-answer">
-              <a href="/docs/examples/pass-data/vehicle-registration">
-                Change <span class="visuallyhidden">registration number</span>
-              </a>
-            </td>            
-          </tr>
-        </tbody>
-      </table>
-      {% endif %}
+            {% endif %}
+            {% if data['armyNumber'] %}
+            <tr>
+              <td>
+                Army service number
+              </td>
+              <td>
+                {{ data['armyNumber'] }}
+              </td>
+              <td class="change-answer">
+                <a href="/medal-application/which-services">
+                  Change
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>Army start date</td>
+              <td>
+                {{ data['armyStart'] }}
+              </td>
+              <td class="change-answer">
+                <a href="/medal-application/which-services">
+                  Change
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>Army end date</td>
+              <td>
+                {{ data['armyServiceEnd'] }}
+              </td>
+              <td class="change-answer">
+                <a href="/medal-application/which-services">
+                  Change
+                </a>
+              </td>
+            </tr>
+            {% endif %}
+            {% if data['homeGuardNumber'] %}
+            <tr>
+              <td>
+                Home Guard service number
+              </td>
+              <td>
+                {{ data['homeGuardNumber'] }}
+              </td>
+              <td class="change-answer">
+                <a href="/medal-application/which-services">
+                  Change
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>Home Guard start date</td>
+              <td>
+                {{ data['homeGuardStart'] }}
+              </td>
+              <td class="change-answer">
+                <a href="/medal-application/which-services">
+                  Change
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>Home Guard end date</td>
+              <td>
+                {{ data['homeGuardEnd'] }}
+              </td>
+              <td class="change-answer">
+                <a href="/medal-application/which-services">
+                  Change
+                </a>
+              </td>
+            </tr>
+            {% endif %}
+            {% if data['rafNumber'] %}
+            <tr>
+              <td>
+                RAF service number
+              </td>
+              <td>
+                {{ data['rafNumber'] }}
+              </td>
+              <td class="change-answer">
+                <a href="/medal-application/which-services">
+                  Change
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>RAF start date</td>
+              <td>
+                {{ data['rafStart'] }}
+              </td>
+              <td class="change-answer">
+                <a href="/medal-application/which-services">
+                  Change
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>RAF start date</td>
+              <td>
+                {{ data['rafEnd'] }}
+              </td>
+              <td class="change-answer">
+                <a href="/medal-application/which-services">
+                  Change
+                </a>
+              </td>
+            </tr>
+            {% endif %}
+            {% if data['royalNavyNumber'] %}
+            <tr>
+              <td>
+                Royal Navy service number
+              </td>
+              <td>
+                {{ data['royalNavyNumber'] }}
+              </td>
+              <td class="change-answer">
+                <a href="/medal-application/which-services">
+                  Change
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>Royal Navy start date</td>
+              <td>
+                {{ data['royalNavyStart'] }}
+              </td>
+              <td class="change-answer">
+                <a href="/medal-application/which-services">
+                  Change
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>Royal Navy start date</td>
+              <td>
+                {{ data['royalNavyEnd'] }}
+              </td>
+              <td class="change-answer">
+                <a href="/medal-application/which-services">
+                  Change
+                </a>
+              </td>
+            </tr>
+            {% endif %}
+            {% if data['royalMarinesNumber'] %}
+            <tr>
+              <td>
+                Royal Marines service number
+              </td>
+              <td>
+                {{ data['royalMarinesNumber'] }}
+              </td>
+              <td class="change-answer">
+                <a href="/medal-application/which-services">
+                  Change
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>Royal Marines start date</td>
+              <td>
+                {{ data['royalMarinesStart'] }}
+              </td>
+              <td class="change-answer">
+                <a href="/medal-application/which-services">
+                  Change
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>Royal Marines start date</td>
+              <td>
+                {{ data['royalMarinesEnd'] }}
+              </td>
+              <td class="change-answer">
+                <a href="/medal-application/which-services">
+                  Change
+                </a>
+              </td>
+            </tr>
+            {% endif %}
+            {% if data['reserveForcesNumber'] %}
+            <tr>
+              <td>
+                Reserve Forces service number
+              </td>
+              <td>
+                {{ data['reserveForcesNumber'] }}
+              </td>
+              <td class="change-answer">
+                <a href="/medal-application/which-services">
+                  Change
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>Reserve Forces start date</td>
+              <td>
+                {{ data['reserveForcesStart'] }}
+              </td>
+              <td class="change-answer">
+                <a href="/medal-application/which-services">
+                  Change
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>Reserve Forces start date</td>
+              <td>
+                {{ data['reserveForcesEnd'] }}
+              </td>
+              <td class="change-answer">
+                <a href="/medal-application/which-services">
+                  Change
+                </a>
+              </td>
+            </tr>
+            {% endif %}
+          </tbody>
+          <thead>
+            <tr>
+              <td colspan='2'>
+                  <h2 class="heading-medium">Personal information</h2>
+              </td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Name</td>
+              <td>
+                {% if data['applicationPerson'] == 'Yes' %}
+                  {{ data['servicePersonName'] }}
+                {% else %}
+                  {{ data['applicantName'] }}
+                {% endif %}
+              </td>
+              <td class="change-answer">
+                <a href="/medal-application/which-services">
+                  Change
+                </a>
+              </td>
+            </tr>
+            {% if data['applicationPerson'] == 'Yes' and data['alternativeName'] %}
+              <tr>
+                <td>Other names held</td>
+                <td>
+                  {{ data['alternativeName']}}
+                </td>
+                <td class="change-answer">
+                  <a href="/medal-application/which-services">
+                    Change
+                  </a>
+                </td>
+              </tr>
+            {% endif %}
+            {% if data['contactPreferenceEmail'] %}
+            <tr>
+              <td>Email address</td>
+              <td>{{ data['contactPreferenceEmail'] }}</td>
+              <td class="change-answer">
+                <a href="/medal-application/which-services">
+                  Change
+                </a>
+              </td>
+            </tr>
+            {% endif %}
+            {% if data['contactPreferencePhone'] or data['contactPreferenceText'] %}
+            <tr>
+              <td>Phone number</td>
+              <td>{{ data['contactPreferencePhone'] }}{{ data['contactPreferenceText'] }}</td>
+              <td class="change-answer">
+                <a href="/medal-application/which-services">
+                  Change
+                </a>
+              </td>
+            </tr>
+            {% endif %}
+            {% if data['postAddress'] %}
+            <tr>
+              <td>Address</td>
+              <td>{{ data['postAddress'] }}</td>
+              <td class="change-answer">
+                <a href="/medal-application/which-services">
+                  Change
+                </a>
+              </td>
+            </tr>
+            {% endif %}
+          </tbody>
+        </table>
 
 
       <h2 class="heading-medium">Now send your application</h2>
@@ -344,5 +365,4 @@ Medals application
     </div>
   </div>
 </main>
-
 {% endblock %}

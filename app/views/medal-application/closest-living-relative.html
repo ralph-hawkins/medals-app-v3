@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Medals application
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main" data-errorHeading="Message to alert the user to a problem goes here" data-errorDescription="Optional description of the errors and how to correct them">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      {% if data['nextOfKin'] == 'Child' %}
+        <h1 class="heading-large">Is the serviceperson’s husband, wife or civil partner alive?</h1>
+      {% else %}
+        <h1 class="heading-large">Are any of these relatives of the serviceperson alive?</h1>
+      {% endif %}
+      {% if data['nextOfKin'] != 'Child' %}
+      <ol class='list list-bullet'>
+        <li>husband, wife or civil partner</li>
+        <li>children</li>
+        {% if data['nextOfKin'] 
+        == 'Mother' %}
+        <li>father</li>
+        {% endif %}
+        {% if data['nextOfKin'] 
+        == 'Brother or sister' %}
+        <li>father</li>
+        <li>mother</li>
+        {% endif %}
+        {% if data['nextOfKin'] 
+        == 'Half brother or sister' %}
+        <li>father</li>
+        <li>mother</li>
+        <li>brother or sister</li>
+        {% endif %}
+        {% if data['nextOfKin'] 
+        == 'Grandchild' %}
+        <li>father</li>
+        <li>mother</li>
+        <li>brother or sister</li>
+        <li>half brother or sister</li>
+        {% endif %}
+        {% if data['nextOfKin'] 
+        == 'Grandfather' %}
+        <li>father</li>
+        <li>mother</li>
+        <li>brother or sister</li>
+        <li>half brother or sister</li>
+        <li>grandchild</li>
+        {% endif %}
+        {% if data['nextOfKin'] 
+        == 'Grandmother' %}
+        <li>father</li>
+        <li>mother</li>
+        <li>brother or sister</li>
+        <li>half brother or sister</li>
+        <li>grandchild</li>
+        <li>grandfather</li>
+        {% endif %}
+        {% if data['nextOfKin'] 
+        == 'Nephew or niece' %}
+        <li>father</li>
+        <li>mother</li>
+        <li>brother or sister</li>
+        <li>half brother or sister</li>
+        <li>grandchild</li>
+        <li>grandfather</li>
+        <li>grandmother</li>
+        {% endif %}
+        {% if data['nextOfKin'] 
+        == 'Half nephew or niece' %}
+        <li>father</li>
+        <li>mother</li>
+        <li>brother or sister</li>
+        <li>half brother or sister</li>
+        <li>grandchild</li>
+        <li>grandfather</li>
+        <li>niece or nephew</li>
+        {% endif %}
+      </ol>
+      {% endif %}
+
+      <form action="death-in-service" method="post" class="form">
+        <div class="form-group" data-required="Custom error message goes here">
+          <fieldset>
+            <label class="form-label" for="closestLivingRelative">
+              <div class='bold padding-bottom-small visually-hidden'>Closest living relative</div>
+            </label>
+            {{ forms.radio (
+            'closestLivingRelative',
+            'closestLivingRelativeTrue',
+            'No, I’m the closest living relative'
+            ) }}
+            {{ forms.radio (
+            'closestLivingRelative',
+            'closestLivingRelativeFalse',
+            'Yes'
+            ) }}
+          </fieldset>
+        </div>
+        {{ forms.save_button( 'Continue' ) }}
+      </form>
+    </div>
+  </div>
+</main>
+
+{% endblock %}

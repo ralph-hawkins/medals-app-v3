@@ -23,7 +23,7 @@
 
 
             {# groupName, name, label, target="" #}
-            {{ forms.radio
+            {{ forms.checkbox
               ( 'contactPreference',
                 'emailAddress',
                 'Email',
@@ -35,7 +35,7 @@
                 'contactPreferenceEmail'
                 )
             }}
-            {{ forms.radio
+            {{ forms.checkbox
               ( 'contactPreference',
                 'phoneNumber',
                 'Phone',
@@ -47,7 +47,7 @@
                 'contactPreferencePhone'
                 )
             }}
-            {{ forms.radio
+            {{ forms.checkbox
               ( 'contactPreference',
                 'textMessage',
                 'Text message',

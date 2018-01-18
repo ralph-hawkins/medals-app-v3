@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-  Medals application
+Medals application
 {% endblock %}
 
 {% block content %}
@@ -11,53 +11,169 @@
     <div class="column-two-thirds">
 
       <h1 class="heading-large">How are you related to the serviceperson?</h1>
-
-      <p>
-        We need to know your reltionship to the serviceperson to determine if you’re eligble to recieve the medals.
-      </p>
-
-      <form action="/medal-application/death-in-service" method="post" class="form">
-
+      <form action="closest-living-relative" method="post" class="form">
         <div class="form-group" data-required="Custom error message goes here">
-          <fieldset class=''>
-            <label class="form-label" for="relationship">
-              <span class='question-lead'>I am their:</span>
+          <fieldset>
+            <label class="form-label" for="tenancy-type">
+              <div class='bold padding-bottom-small'>I am their:</div>
             </label>
 
-            {# groupName, name, label, target="" #}
-            {{ forms.radio
-              ( 'relationship', 'relationshipSpouse', 'Husband, wife or civil partner') }}
-            {{ forms.radio
-              ( 'relationship', 'relationshipParent', 'Parent', 'parentType') }}
-            <div class="panel panel-border-narrow js-hidden " id="parentType">
-              <p class='bold'>
-                Are you their mother or father?
-              </p>
-              <div class="form-group">
-                {# groupName, name, label, target #}
-                {{ forms.radio
-                  ('parentType', 'parentMother', 'Mother') }}
-                {{ forms.radio
-                  ('parentType', 'parentFather', 'Father') }}
+            {{ forms.radio (
+              'nextOfKin',
+              'nextOfKinHusbandWifeOrCivilPartner',
+              'Husband, wife or civil partner'
+              ) }}
+            {{ forms.radio (
+              'nextOfKin',
+              'nextOfKinChild',
+              'Child',
+              'eldestChild'
+            ) }}
+            <div class="panel panel-border-narrow js-hidden" id="eldestChild">
+              <div class='padding-bottom-small'>
+                Are you the eldest living child?
               </div>
+              {{ forms.radio (
+                'eldestChild',
+                'eldestChildYes',
+                'Yes'
+              ) }}
+              {{ forms.radio (
+                'eldestChild',
+                'eldestChildNo',
+                'No'
+              ) }}
             </div>
-            {{ forms.radio
-              ( 'relationship', 'relationshipChild', 'Child') }}
-            {{ forms.radio
-              ( 'relationship', 'relationshipSibling', 'Brother or sister') }}
-            {{ forms.radio
-              ( 'relationship', 'relationshipGrandChild', 'Grandchild') }}
-            {{ forms.radio
-              ( 'relationship', 'relationshipAuntUncle', 'Aunt or uncle') }}
-            {{ forms.radio
-              ( 'relationship', 'relationshipNieceNephew', 'Niece or nephew') }}
-          </fieldset>
-        </div>
-
+            {{ forms.radio (
+              'nextOfKin',
+              'nextOfKinFather',
+              'Father'
+              ) }}
+            {{ forms.radio (
+              'nextOfKin',
+              'nextOfKinMother',
+              'Mother'
+              ) }}
+              {{ forms.radio (
+              'nextOfKin',
+              'nextOfKinBrotherOrSister',
+              'Brother or sister',
+              'eldestBrotherOrSister'
+            ) }}
+            <div class="panel panel-border-narrow js-hidden" id="eldestBrotherOrSister">
+              <div class='padding-bottom-small'>
+                Are you the eldest living brother or sister?
+              </div>
+              {{ forms.radio (
+                'eldestBrotherOrSister',
+                'eldestBrotherOrSisterYes',
+                'Yes'
+              ) }}
+              {{ forms.radio (
+                'eldestBrotherOrSister',
+                'eldestBrotherOrSisterNo',
+                'No'
+              ) }}
+            </div>
+            {{ forms.radio (
+              'nextOfKin',
+              'nextOfKinHalfBrotherOrSister',
+              'Half brother or sister',
+              'eldestHalfBrotherOrSister'
+            ) }}
+            <div class="panel panel-border-narrow js-hidden" id="eldestHalfBrotherOrSister">
+              <div class='padding-bottom-small'>
+                Are you the eldest living half brother or sister?
+              </div>
+              {{ forms.radio (
+                'eldestHalfBrotherOrSister',
+                'eldestHalfBrotherOrSisterYes',
+                'Yes'
+              ) }}
+              {{ forms.radio (
+                'eldestHalfBrotherOrSister',
+                'eldestHalfBrotherOrSisterNo',
+                'No'
+              ) }}
+            </div>
+            {{ forms.radio (
+              'nextOfKin',
+              'nextOfKinGrandchild',
+              'Grandchild',
+              'eldestGrandchild'
+            ) }}
+            <div class="panel panel-border-narrow js-hidden" id="eldestGrandchild">
+              <div class='padding-bottom-small'>
+                Are you the eldest living grandchild?
+              </div>
+              {{ forms.radio (
+                'eldestGrandchild',
+                'eldestGrandchildYes',
+                'Yes'
+              ) }}
+              {{ forms.radio (
+                'eldestGrandchild',
+                'eldestGrandchildNo',
+                'No'
+              ) }}
+            </div>
+            {{ forms.radio (
+              'nextOfKin',
+              'nextOfKinGrandfather',
+              'Grandfather'
+              ) }}
+            {{ forms.radio (
+              'nextOfKin',
+              'nextOfKinGrandmother',
+              'Grandmother'
+            ) }}
+            {{ forms.radio (
+              'nextOfKin',
+              'nextOfKinNephewOrNiece',
+              'Nephew or niece',
+              'eldestNephewOrNiece'
+            ) }}
+            <div class="panel panel-border-narrow js-hidden" id="eldestNephewOrNiece">
+              <div class='padding-bottom-small'>
+                Are you the eldest living nephew or niece?
+              </div>
+              {{ forms.radio (
+                'eldestNephewOrNiece',
+                'eldestNephewOrNieceYes',
+                'Yes'
+              ) }}
+              {{ forms.radio (
+                'eldestNephewOrNiece',
+                'eldestNephewOrNieceNo',
+                'No'
+              ) }}
+            </div>
+            {{ forms.radio (
+              'nextOfKin',
+              'nextOfKinHalfNephewOrNiece',
+              'Half nephew or niece',
+              'eldestHalfNephewOrNiece'
+            ) }}
+            <div class="panel panel-border-narrow js-hidden" id="eldestHalfNephewOrNiece">
+              <div class='padding-bottom-small'>
+                Are you the eldest living half nephew or niece?
+              </div>
+              {{ forms.radio (
+                'eldestHalfNephewOrNiece',
+                'eldestHalfNephewOrNieceYes',
+                'Yes'
+              ) }}
+              {{ forms.radio (
+                'eldestHalfNephewOrNiece',
+                'eldestHalfNephewOrNieceNo',
+                'No'
+              ) }}
+            </div>
+            </fieldset>
+          </div>
         {{ forms.save_button( 'Continue' ) }}
-
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </main>
 
