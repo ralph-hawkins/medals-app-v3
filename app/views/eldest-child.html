@@ -10,25 +10,32 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <h1 class="heading-large">Did the service&nbsp;person die in service?</h1>
+      <h1 class="heading-large">
+        Are you the service&nbsp;person’s eldest living child?
+      </h1>
 
-      <form action="/medal-application/evidence-of-death" method="post" class="form">
+      <p>
+        Children include adopted children, but not stepchildren.
+      </p>
+
+      <form action="/death-in-service" method="post" class="form">
 
         <div class="form-group" data-required="Custom error message goes here">
           <fieldset class=''>
 
-            <label class="form-label" for="otherName">
+            <label class="form-label" for="eldestChild">
               <span class='visually-hidden'>Other names</span>
             </label>
 
-            {# ( groupName, name, label, target="" ) #}
-            {{ forms.radio( 'diedInService', 'diedInServiceYes', 'Yes' ) }}
-            {{ forms.radio( 'diedInService', 'diedInServiceNo', 'No' ) }}
-
+            <!-- Arguments: 'id yes', 'id no', 'name' -->
+            {{ forms.radio( 'eldestChild', 'eldestChildYes', 'Yes' ) }}
+            {{ forms.radio( 'eldestChild', 'eldestChildNo', 'No' ) }}
           </fieldset>
         </div>
 
-        {# buttonText #}
+
+
+        <!-- Arguments: 'button text' -->
         {{ forms.save_button( 'Continue' ) }}
 
       </div>

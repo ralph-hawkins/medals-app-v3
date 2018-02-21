@@ -10,9 +10,9 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-      <h1 class="heading-large">Are you applying for medals awarded to you?</h1>
+      <h1 class="heading-large">What’s your name?</h1>
 
-      <form action="/medal-application/active-service" method="post" class="form">
+      <form action="/contact-preference" method="post" class="form">
 
         <div class="form-group" data-required="Custom error message goes here">
           <fieldset class=''>
@@ -21,20 +21,10 @@
             </label>
 
             {# ( groupName, name, label, target="" ) #}
-            {{ forms.radio
-              ( 'applicationPerson',
-                'yesMyself',
-                'Yes') 
-            }}
-            {{ forms.radio
-              ( 'applicationPerson',
-                'behalfOfRelative',
-                'No, I’m applying on behalf of someone else') 
-            }}
-            {{ forms.radio
-              ( 'applicationPerson',
-                'relativeOfDeceased',
-                'No, I’m applying for the medals of a deceased relative') 
+            {{ forms.input
+              ( 'applicantName',
+                'Full name'
+              ) 
             }}
 
           </fieldset>

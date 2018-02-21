@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Medals application
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main" data-errorHeading="Message to alert the user to a problem goes here" data-errorDescription="Optional description of the errors and how to correct them">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">Are you applying for medals awarded to you?</h1>
+
+      <form action="/active-service" method="post" class="form">
+
+        <div class="form-group" data-required="">
+          <fieldset class=''>
+            <label class="form-label" for="applicationPerson">
+              <span class='visually-hidden'>Application person</span>
+            </label>
+
+            {# ( groupName, name, label, target="" ) #}
+            {{ forms.radio
+              ( 'applicationPerson',
+                'yesMyself',
+                'Yes') 
+            }}
+            {{ forms.radio
+              ( 'applicationPerson',
+                'behalfOfRelative',
+                'No, I’m applying on behalf of someone else') 
+            }}
+            {{ forms.radio
+              ( 'applicationPerson',
+                'relativeOfDeceased',
+                'No, I’m applying for the medals of a deceased relative') 
+            }}
+
+          </fieldset>
+        </div>
+
+        <!-- 'button text' -->
+        {{ forms.save_button( 'Continue' ) }}
+
+      </div>
+    </form>
+  </div>
+</main>
+
+{% endblock %}

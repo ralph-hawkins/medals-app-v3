@@ -1,15 +1,15 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-  Start page example
+Start page example
 {% endblock %}
 
 {% block proposition_header %}
-  <!-- blank to remove the proposition header -->
+<!-- blank to remove the proposition header -->
 {% endblock %}
 
 {% block header_class %}
-  <!-- blank to remove the proposition header -->
+<!-- blank to remove the proposition header -->
 {% endblock %}
 
 {% block content %}
@@ -24,20 +24,86 @@
     </ol>
   </div>
 
-  <div class='grid-row'>
-    <div class='column-two-thirds'>
-      
-      <h1 class='heading-large'>
-        Medals applications
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-xlarge">
+        {% if serviceName %} {{ serviceName }} {% endif %}
       </h1>
 
-      <ul>
+      <p>
+        Current serving personnel should speak to their unit HR regarding all medals.
+      </p>
+
+      <p>Use this service to apply for medals awarded:</p>
+
+      <ul class="list list-bullet">
         <li>
-          <a href="medal-application">
-            Apply for military service medals — simple intestacy guidance
-          </a>
+          during your military career
+        </li>
+        <li>
+          to someone you have lasting power of attorney for during their military career
+        </li>
+        <li>
+          to a deceased family member during their career
         </li>
       </ul>
+
+      <p>This service only provides medals awarded by:</p>
+
+      <ul class='list list-bullet'>
+        <li>Army</li>
+        <li>Home Guard</li>
+        <li>Royal Air Force</li>
+        <li>Royal Navy</li>
+        <li>Royal Marines</li>
+        <li>Reserve forces</li>
+      </ul>
+
+      <p>
+        If you’re applying on behalf of someone using lasting power of attorney you’ll need:
+      </p>
+      <ul class="list list-bullet">
+        <li>details of the person’s military career</li>
+        <li>evidence of lasting power of attorney</li>
+      </ul>
+
+      <h3 class='heading-small'>If you’re applying for someone else’s medal</h3>
+
+      <p>You can apply on behalf of a veteran if you have <a href="/lasting-power-attorney-duties">lasting power of attorney</a>.</p>
+
+      <p>If the veteran has died, you must be the official next of kin. The general rules are:</p>
+
+      <ul class='list-bullet list'>
+        <li>the person’s spouse or civil partner has first claim to the medal, and then the eldest child</li>
+        <li>if there’s no spouse or child, the eldest grandchild is entitled to apply</li>
+      </ul>
+
+
+      <p>Applying takes around 5 minutes.</p>
+
+      <p>
+        <a class="button button-start" href="/applicant" role="button">Start now</a>
+      </p>
+
+      <h2 class="heading-medium">Before you start</h2>
+
+      <p>You can also <a href="#">apply by post.</a></p>
+
+    </div>
+    <div class="column-third">
+
+      <aside class="govuk-related-items" role="complementary">
+        <h2 class="heading-medium" id="subsection-title">Subsection</h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="font-xsmall">
+            <li><a href="#">Related link</a></li>
+            <li><a href="#">Related link</a></li>
+            <li><a href="#" class="bold-xsmall">More <span class="visuallyhidden">in Subsection</span></a></li>
+          </ul>
+        </nav>
+      </aside>
+
     </div>
   </div>
 
