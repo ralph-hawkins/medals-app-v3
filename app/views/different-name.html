@@ -22,11 +22,7 @@
         </p>
       {% endif %}
 
-      {% if data['applicationPerson'] == 'Yes' %}
-        <form action="/contact-preference" method="post" class="form">
-      {% else %}
-        <form action="/applicant-name" method="post" class="form">
-      {% endif %}
+        <form action="/date-of-birth" method="post" class="form">
       
         <div class="form-group" data-required="Custom error message goes here">
           <fieldset class=''>
@@ -57,10 +53,9 @@
 
         <!-- Arguments: 'button text' -->
         {{ forms.save_button( 'Continue' ) }}
-
-      </div>
     </form>
   </div>
+</div>
 </main>
 
 {% endblock %}

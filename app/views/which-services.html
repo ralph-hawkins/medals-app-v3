@@ -32,6 +32,14 @@
               'armyDetails') }}
 
             <div class="panel panel-border-narrow js-hidden" id="armyDetails">
+            {{ forms.input (
+               'armyStartOrg',
+               'Service, regiment or corps enlisted to')
+            }}
+            {{ forms.input (
+               'armyEndOrg',
+               'Service, regiment or corps discharged from')
+            }}
             {{ forms.input ( 
               'armyNumber',
               'Service Number',
@@ -52,6 +60,14 @@
               'homeGuardDetails') }}
 
             <div class="panel panel-border-narrow js-hidden" id="homeGuardDetails">
+            {{ forms.input (
+               'homeGuardStartOrg',
+               'Service, regiment or corps enlisted to')
+            }}
+            {{ forms.input (
+               'homeGuardEndOrg',
+               'Service, regiment or corps discharged from')
+            }}
             {{ forms.input ( 
               'homeGuardNumber',
               'Service Number',
@@ -72,6 +88,14 @@
               'rafDetails') }}
 
             <div class="panel panel-border-narrow js-hidden" id="rafDetails">
+            {{ forms.input (
+               'rafStartOrg',
+               'Service, regiment or corps enlisted to')
+            }}
+            {{ forms.input (
+               'rafEndOrg',
+               'Service, regiment or corps discharged from')
+            }}
             {{ forms.input ( 
               'rafNumber',
               'Service Number',
@@ -92,6 +116,14 @@
               'royalNavyDetails') }}
 
             <div class="panel panel-border-narrow js-hidden" id="royalNavyDetails">
+            {{ forms.input (
+               'navyStartOrg',
+               'Service, regiment or corps enlisted to')
+            }}
+            {{ forms.input (
+               'navyEndOrg',
+               'Service, regiment or corps discharged from')
+            }}
             {{ forms.input ( 
               'royalNavyNumber',
               'Service Number',
@@ -112,6 +144,14 @@
               'royalMarinesDetails') }}
 
             <div class="panel panel-border-narrow js-hidden" id="royalMarinesDetails">
+            {{ forms.input (
+               'royalMarinesStartOrg',
+               'Service, regiment or corps enlisted to')
+            }}
+            {{ forms.input (
+               'royalMarinesEndOrg',
+               'Service, regiment or corps discharged from')
+            }}
             {{ forms.input ( 
               'royalMarinesNumber',
               'Service Number',
@@ -132,6 +172,14 @@
               'reserveForcesDetails') }}
 
             <div class="panel panel-border-narrow js-hidden" id="reserveForcesDetails">
+            {{ forms.input (
+               'reserveForcesStartOrg',
+               'Service, regiment or corps enlisted to')
+            }}
+            {{ forms.input (
+               'reserveForcesEndOrg',
+               'Service, regiment or corps discharged from')
+            }}
             {{ forms.input ( 
               'reserveForcesNumber',
               'Service Number',
@@ -150,11 +198,11 @@
               'organisations', 
               'other-organisations',
               'Other organisations',
-              'For example, the Civil Defense Service, Royal Fleet Auxiliary or Merchant Navy') }}
+              'For example, the Civil Defence Service, Royal Fleet Auxiliary or Merchant Navy') }}
 
 
 
-            {% if data['applicationPerson'] == 'relativeOfDeceased' %}
+            {% if data['applicationPerson'] == 'No, I’m applying for the medals of a deceased relative' %}
 
             <p class='or'>
               Or

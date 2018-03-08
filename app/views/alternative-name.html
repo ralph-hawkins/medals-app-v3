@@ -16,11 +16,8 @@ Medals application
         <h1 class="heading-large">Other names the serviceperson was known by</h1>
       {% endif %}
 
-      {% if data['applicationPerson'] == 'Yes' %}
-        <form action="/contact-preference" method="post" class="form">
-      {% else %}
-        <form action="/applicant-name" method="post" class="form">
-      {% endif %}
+        <form action="/date-of-birth" method="post" class="form">
+
         <div class="form-group">
 
             <!-- Arguments: 'id yes', 'id no', 'name' -->

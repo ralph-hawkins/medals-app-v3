@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Medals application
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main" data-errorHeading="Message to alert the user to a problem goes here" data-errorDescription="Optional description of the errors and how to correct them">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      {% if data['applicationPerson'] == 'Yes' %}
+      <h1 class="heading-large">Date of birth</h1>
+
+      <form action="/contact-preference" method="post" class="form">
+
+        <div class="form-group" data-required="Custom error message goes here">
+          <fieldset class=''>
+
+            {{ forms.date( 
+              'servicePersonDob',
+              '', 
+              'For example, 31 3 1980' ) }}
+
+            </fieldset>
+          </div>
+          {{ forms.save_button( 'Continue' ) }}
+        </form>
+
+
+        {% elseif data['applicationPerson'] == 'No, I’m applying on behalf of someone else' %}
+        <h1 class="heading-large">Serviceperson’s date of birth</h1>
+
+        <form action="/applicant-name" method="post" class="form">
+
+          <div class="form-group" data-required="Custom error message goes here">
+            <fieldset class=''>
+
+              {{ forms.date( 
+                'servicePersonDob',
+                '', 
+                'For example, 31 3 1980' ) }}
+
+              </fieldset>
+            </div>
+            {{ forms.save_button( 'Continue' ) }}
+          </form>
+
+          {% else %}
+
+          <h1 class="heading-large">Do you know the serviceperson’s date of birth?</h1>
+
+          <form action="/applicant-name" method="post" class="form">
+
+            <div class="form-group" data-required="Custom error message goes here">
+              <fieldset class=''>
+
+                {{ forms.radio(
+                  'dobKnown',
+                  'dobKnownYes', 
+                  'Yes', 
+                  'dobInput'
+                  )
+                }}
+
+                <div class="panel panel-border-narrow js-hidden" id="dobInput">
+                  {{ forms.date( 
+                    'servicePersonDob',
+                    '', 
+                    'For example, 31 3 1980' ) 
+                  }}
+                  </div>
+
+                  {{ forms.radio(
+                    'dobKnown',
+                    'dobKnownNo', 
+                    'No'
+                    )
+                  }}
+
+                </fieldset>
+              </div>
+              {{ forms.save_button( 'Continue' ) }}
+            </form>
+
+            {% endif %}
+          </div>
+        </div>
+      </main>
+
+      {% endblock %}

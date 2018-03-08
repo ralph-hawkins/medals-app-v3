@@ -33,7 +33,7 @@ router.post('/which-services', function (req, res) {
   var activeService = req.body.activeService
 
 
-  if (activeService == 'No, I’m currently serving') {
+  if (activeService == 'Yes') {
     res.redirect('/ineligible-still-serving')  }
 
   else {
@@ -141,27 +141,37 @@ router.post('/evidence-of-death', function (req, res) {
 //Were you known by other names while in the military?
 router.post('/contact-preference', function (req, res) {
 
-  var otherName = req.body.otherName
-
-
-  if (otherName == 'Yes') {
-    res.redirect('/alternative-name')  }
-
-  else {
-    res.redirect('/contact-preference')  }
+  res.redirect('/contact-preference')
 })
+
 
 router.post('/applicant-name', function (req, res) {
 
-  var otherName = req.body.otherName
+  res.redirect('/applicant-name')
 
+})
+
+router.post('/date-of-birth', function (req, res) {
+  var otherName = req.body.otherName
 
   if (otherName == 'Yes') {
     res.redirect('/alternative-name')  }
 
-  else {
-    res.redirect('/applicant-name')  }
+  // else if ('dobKnown' in req.body ) {
+  //   res.redirect('/alternative-name')  }
+
+  if (otherName == 'No') {
+    res.redirect('/date-of-birth')  }
+
+  if (otherName == 'Not sure') {
+  res.redirect('/date-of-birth')  }
+
+  if ('alternativeName' in req.body ) {
+    res.redirect('/date-of-birth')
+  }
+
 })
+
 
 
 //Is there a living husband, wife or civil partner?

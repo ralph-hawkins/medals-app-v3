@@ -11,7 +11,7 @@
     <div class="column-two-thirds">
 
       <h1 class="heading-large">
-          Is the service&nbsp;person retired from the armed forces?
+          Is the serviceperson currently serving in the armed forces?
       </h1>
 
       <form action="lpa" method="post" class="form">
@@ -19,15 +19,15 @@
         <div class="form-group" data-required="Custom error message goes here">
           <fieldset class=''>
             <label class="form-label" for="active3rdParty">
-              <span class='visually-hidden'>Is the service person retired from the armed forces?</span>
+              <span class='visually-hidden'>Is the serviceperson currently serving in the armed forces?</span>
             </label>
 
             {# groupName, name, label, target="" #}
             {{ forms.radio
-              ( 'active3rdParty', 'retired', 'Yes') 
+              ( 'active3rdParty', 'serving', 'Yes') 
             }}
             {{ forms.radio
-              ( 'active3rdParty', 'serving', 'No, they’re currently serving', 'serving') 
+              ( 'active3rdParty', 'retired', 'No') 
             }}
           </fieldset>
         </div>
